@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>Προγνωστικά Europa League</title>
   <style>
-    /* Βασικό στυλ */
     body {
       font-family: Arial, sans-serif;
       background-color: #f0f8f5;
@@ -13,7 +12,6 @@
       padding: 0;
     }
 
-    /* Επικεφαλίδα */
     header {
       background-color: #006400;
       color: white;
@@ -21,31 +19,26 @@
       padding: 20px;
     }
 
-    header h1 {
-      margin: 0;
-    }
-
-    /* Μενού πλοήγησης */
     nav {
       background-color: #003366;
-      padding: 10px;
+      padding: 12px;
       text-align: center;
     }
 
     nav a {
       color: white;
-      margin: 0 20px;
+      margin: 0 25px;
       text-decoration: none;
       font-weight: bold;
+      font-size: 18px;
     }
 
     nav a:hover {
       text-decoration: underline;
     }
 
-    /* Κυρίως περιεχόμενο */
     main {
-      padding: 20px;
+      padding: 25px;
     }
 
     .match {
@@ -54,6 +47,7 @@
       border-radius: 8px;
       padding: 15px;
       margin-bottom: 20px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
     }
 
     .match h3 {
@@ -61,19 +55,16 @@
       color: #006400;
     }
 
-    label {
-      display: inline-block;
-      width: 100px;
+    .prediction {
+      font-size: 16px;
+      margin: 5px 0;
+    }
+
+    .odd {
       font-weight: bold;
+      color: #003366;
     }
 
-    input {
-      padding: 5px;
-      margin: 5px 0 10px 0;
-      width: 200px;
-    }
-
-    /* Συνολική απόδοση */
     .total {
       margin-top: 20px;
       padding: 15px;
@@ -81,91 +72,45 @@
       color: white;
       border-radius: 8px;
       text-align: center;
-      font-size: 18px;
+      font-size: 20px;
       font-weight: bold;
-    }
-
-    /* Κουμπί */
-    button {
-      margin-top: 10px;
-      padding: 10px 20px;
-      background: #006400;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    button:hover {
-      background: #004d00;
     }
   </style>
 </head>
 <body>
-  <!-- Επικεφαλίδα -->
   <header>
     <h1>Προγνωστικά Europa League</h1>
     <p>Ημερομηνία: 24/09/2025</p>
   </header>
 
-  <!-- Μενού -->
   <nav>
     <a href="#">Europa League</a>
     <a href="#">Champions League</a>
     <a href="#">Πρωτάθλημα</a>
   </nav>
 
-  <!-- Περιεχόμενο -->
   <main>
     <div class="match">
-      <h3>ΠΑΟΚ</h3>
-      <label>Πρόβλεψη:</label>
-      <input type="text" placeholder="π.χ. Νίκη ΠΑΟΚ"><br>
-      <label>Απόδοση:</label>
-      <input type="number" step="0.01" class="odd" placeholder="π.χ. 2.10">
+      <h3>ΠΑΟΚ - Μακάμπι Τελ Αβίβ</h3>
+      <div class="prediction">Πρόβλεψη: Νίκη ΠΑΟΚ</div>
+      <div class="prediction">Απόδοση: <span class="odd">2.10</span></div>
     </div>
 
     <div class="match">
-      <h3>Φενέρμπαχτσε</h3>
-      <label>Πρόβλεψη:</label>
-      <input type="text" placeholder="π.χ. Over 2.5"><br>
-      <label>Απόδοση:</label>
-      <input type="number" step="0.01" class="odd" placeholder="π.χ. 1.85">
+      <h3>Ντιναμό Ζάγκρεμπ - Φενερμπαχτσέ</h3>
+      <div class="prediction">Πρόβλεψη: GG (Goal/Goal)</div>
+      <div class="prediction">Απόδοση: <span class="odd">1.85</span></div>
     </div>
 
     <div class="match">
-      <h3>Μπέτις</h3>
-      <label>Πρόβλεψη:</label>
-      <input type="text" placeholder="π.χ. Ισοπαλία"><br>
-      <label>Απόδοση:</label>
-      <input type="number" step="0.01" class="odd" placeholder="π.χ. 3.20">
+      <h3>Ρεάλ Μπέτις - Νότιγχαμ Φόρεστ</h3>
+      <div class="prediction">Πρόβλεψη: Over 2.5</div>
+      <div class="prediction">Απόδοση: <span class="odd">2.05</span></div>
     </div>
 
-    <!-- Κουμπί για υπολογισμό -->
-    <button onclick="calculateTotal()">Υπολόγισε Συνολική Απόδοση</button>
-
-    <!-- Αποτέλεσμα -->
-    <div class="total" id="total">Συνολική Απόδοση: -</div>
+    <div class="total">
+      Συνολική Απόδοση: 7.94
+    </div>
   </main>
-
-  <script>
-    function calculateTotal() {
-      let odds = document.querySelectorAll('.odd');
-      let total = 1;
-      let valid = false;
-
-      odds.forEach(input => {
-        let value = parseFloat(input.value);
-        if (!isNaN(value) && value > 0) {
-          total *= value;
-          valid = true;
-        }
-      });
-
-      document.getElementById('total').innerText =
-        valid ? "Συνολική Απόδοση: " + total.toFixed(2) : "Συνολική Απόδοση: -";
-    }
-  </script>
 </body>
 </html>
