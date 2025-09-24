@@ -6,57 +6,64 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #e6f2ff;
+      background-color: #e6f0ff;
       margin: 0;
       padding: 0;
     }
+
+    /* Μπάρα τίτλου */
     header {
-      background: #004d99;
+      background-color: #004080;
       color: white;
-      padding: 15px;
       text-align: center;
+      padding: 12px;
+      font-size: 22px;
+      font-weight: bold;
     }
+
+    /* Μενού */
     nav {
-      background: #006600;
-      padding: 10px;
-      text-align: center;
+      background-color: #003366;
+      display: flex;
+      justify-content: center;
     }
     nav a {
       color: white;
+      padding: 12px 18px;
       text-decoration: none;
-      margin: 0 15px;
       font-weight: bold;
     }
     nav a:hover {
-      text-decoration: underline;
+      background-color: #002244;
     }
-    main {
-      padding: 20px;
-      text-align: center;
+    nav a.active {
+      background-color: #001122;
     }
-    .no-matches {
-      background: #ccffcc;
+
+    /* Κουτί περιεχομένου */
+    .content {
+      margin: 20px;
       padding: 15px;
-      border-radius: 5px;
-      display: inline-block;
-      margin-top: 20px;
-      font-weight: bold;
+      background-color: #f8f8f8;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 18px;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Πρωτάθλημα</h1>
-  </header>
 
-  <!-- Δεύτερο μενού για γρήγορη επιλογή -->
+  <header>Πρωτάθλημα</header>
+
   <nav>
     <a href="europa-today.html">Europa League</a>
     <a href="champions.html">Champions League</a>
+    <a href="prota8lhma.html" class="active">Πρωτάθλημα</a>
   </nav>
 
-  <main>
-    <p class="no-matches">Δεν υπάρχουν διαθέσιμοι αγώνες σήμερα</p>
-  </main>
+  <div class="content">
+    Δεν υπάρχουν διαθέσιμοι αγώνες σήμερα.
+  </div>
+
 </body>
 </html>
