@@ -2,34 +2,31 @@
 <html lang="el">
 <head>
   <meta charset="UTF-8">
-  <title>Champions League</title>
+  <title>Προγνωστικά Champions League</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #e6f2ff;
-      color: #004d4d;
-      text-align: center;
-    }
-    header {
-      background-color: #004d99;
-      color: white;
-      padding: 15px;
-    }
-    main {
-      margin: 30px auto;
-      padding: 20px;
-      background: #ccffcc;
-      width: 60%;
-      border-radius: 8px;
-    }
+    body { font-family: Arial, sans-serif; background:#f0f8f5; margin:0; padding:0; }
+    header { background:#006400; color:white; text-align:center; padding:20px; }
+    nav { background:#003366; text-align:center; padding:12px; }
+    nav a { color:white; margin:0 25px; text-decoration:none; font-weight:bold; font-size:18px; }
+    nav a:hover { text-decoration:underline; }
+    main { padding:25px; text-align:center; }
+    .message { font-size:20px; color:#003366; font-weight:bold; }
   </style>
 </head>
 <body>
   <header>
-    <h1>Champions League</h1>
+    <h1>Προγνωστικά Champions League</h1>
+    <p>Ημερομηνία: 24/09/2025</p>
   </header>
+
+  <nav>
+    <a href="europa-today.html">Europa League</a>
+    <a href="champions.html">Champions League</a>
+    <a href="protathlima.html">Πρωτάθλημα</a>
+  </nav>
+
   <main>
-    <h2>Δεν υπάρχουν διαθέσιμοι αγώνες σήμερα</h2>
+    <div class="message">Δεν υπάρχουν αγώνες σήμερα.</div>
   </main>
 </body>
 </html>
