@@ -2,52 +2,24 @@
 <html lang="el">
 <head>
   <meta charset="UTF-8">
-  <title>Europa League Σήμερα – Αγώνες & Προβλέψεις</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Europa League – Σήμερα</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f0f8ff;
       margin: 0;
       padding: 0;
-      color: #003300; /* σκούρο πράσινο για το κείμενο */
+      background: #e6f2ff;
+      color: #003300;
     }
     header {
-      background: #004d99; /* μπλε */
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-    .date-box {
-      text-align: center;
-      margin: 20px 0;
-      font-size: 18px;
-      color: #004d99;
-    }
-    table {
-      width: 90%;
-      margin: 20px auto;
-      border-collapse: collapse;
-      background: white;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    th, td {
-      border: 1px solid #ddd;
-      padding: 10px;
-      text-align: center;
-    }
-    th {
       background: #004d99;
       color: white;
-    }
-    tr:nth-child(even) {
-      background: #f9f9f9;
-    }
-    .prediction {
-      font-weight: bold;
-      color: #006600; /* έντονο πράσινο */
+      padding: 15px;
+      text-align: center;
     }
     nav {
-      background: #009933; /* πράσινο μενού */
+      background: #009933;
       padding: 10px;
       text-align: center;
     }
@@ -60,12 +32,48 @@
     nav a:hover {
       text-decoration: underline;
     }
+    main {
+      padding: 20px;
+      text-align: center;
+    }
+    h2 {
+      color: #004d99;
+    }
+    table {
+      margin: 0 auto;
+      border-collapse: collapse;
+      width: 90%;
+      background: white;
+    }
+    th, td {
+      border: 1px solid #004d99;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background: #004d99;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background: #f2f9ff;
+    }
+    .total {
+      font-weight: bold;
+      background: #009933;
+      color: white;
+    }
+    img.flag {
+      width: 25px;
+      height: 18px;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
     footer {
       background: #004d99;
       color: white;
       text-align: center;
       padding: 10px;
-      margin-top: 40px;
+      margin-top: 20px;
     }
   </style>
 </head>
@@ -75,34 +83,55 @@
   </header>
 
   <nav>
-    <a href="index.html">Αρχική</a>
-    <a href="europa-today.html">Σημερινά Europa League</a>
-    <a href="prognostika.html">Προγνωστικά</a>
+    <a href="index.html">Champions League</a>
+    <a href="europa-today.html">Europa League</a>
+    <a href="protathlima.html">Πρωτάθλημα</a>
   </nav>
 
-  <div class="date-box">
-    <p>24 Σεπτεμβρίου 2025</p>
-  </div>
-
-  <table>
-    <tr>
-      <th>Αγώνας</th>
-      <th>Ώρα (Ελλάδα)</th>
-      <th>Πρόβλεψη</th>
-    </tr>
-    <tr><td>Μίντιλαντ – Στουρμ Γκρατς</td><td>19:45</td><td class="prediction">GG</td></tr>
-    <tr><td>ΠΑΟΚ – Μακάμπι Τελ Αβίβ</td><td>19:45</td><td class="prediction">1</td></tr>
-    <tr><td>Ερυθρός Αστέρας – Σέλτικ</td><td>22:00</td><td class="prediction">Over 2.5</td></tr>
-    <tr><td>Μπράγκα – Φέγενορντ</td><td>22:00</td><td class="prediction">Χ</td></tr>
-    <tr><td>Ντιναμό Ζάγκρεμπ – Φενερμπαχτσέ</td><td>22:00</td><td class="prediction">GG</td></tr>
-    <tr><td>Μάλμε – Λουντογκόρετς</td><td>22:00</td><td class="prediction">2</td></tr>
-    <tr><td>Νις – Ρόμα</td><td>22:00</td><td class="prediction">2</td></tr>
-    <tr><td>Ρεάλ Μπέτις – Νότιγχαμ Φόρεστ</td><td>22:00</td><td class="prediction">Over 2.5</td></tr>
-    <tr><td>Φράιμπουργκ – Βασιλεία</td><td>22:00</td><td class="prediction">1</td></tr>
-  </table>
+  <main>
+    <h2>24 Σεπτεμβρίου 2025</h2>
+    <table id="matches">
+      <tr>
+        <th>Αγώνας</th>
+        <th>Ώρα (Ελλάδα)</th>
+        <th>Πρόβλεψη</th>
+        <th>Απόδοση</th>
+      </tr>
+      <tr>
+        <td><img class="flag" src="https://flagcdn.com/w20/gr.png"> ΠΑΟΚ – <img class="flag" src="https://flagcdn.com/w20/il.png"> Μακάμπι Τελ Αβίβ</td>
+        <td>19:45</td>
+        <td>1</td>
+        <td class="odd">2.0</td>
+      </tr>
+      <tr>
+        <td><img class="flag" src="https://flagcdn.com/w20/hr.png"> Ντιναμό Ζάγκρεμπ – <img class="flag" src="https://flagcdn.com/w20/tr.png"> Φενερμπαχτσέ</td>
+        <td>22:00</td>
+        <td>2</td>
+        <td class="odd">2.22</td>
+      </tr>
+      <tr>
+        <td><img class="flag" src="https://flagcdn.com/w20/es.png"> Ρεάλ Μπέτις – <img class="flag" src="https://flagcdn.com/w20/gb.png"> Νότιγχαμ Φόρεστ</td>
+        <td>22:00</td>
+        <td>1</td>
+        <td class="odd">2.38</td>
+      </tr>
+      <tr class="total">
+        <td colspan="3">Συνολική Απόδοση</td>
+        <td id="total">-</td>
+      </tr>
+    </table>
+  </main>
 
   <footer>
     <p>© 2025 Football Fans</p>
   </footer>
+
+  <script>
+    // Υπολογισμός συνολικής απόδοσης
+    let odds = document.querySelectorAll(".odd");
+    let total = 1;
+    odds.forEach(o => total *= parseFloat(o.textContent));
+    document.getElementById("total").textContent = total.toFixed(2);
+  </script>
 </body>
 </html>
