@@ -2,79 +2,127 @@
 <html lang="el">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Football Fans</title>
+  <title>Προγνωστικά</title>
   <style>
     body {
       font-family: Arial, sans-serif;
+      background-color: #f4faff;
+      color: #003366;
       margin: 0;
       padding: 0;
-      background: #e6f2ff; /* ανοιχτό μπλε */
-      color: #003300; /* σκούρο πράσινο */
     }
-
     header {
-      background: #004d99; /* μπλε */
+      background-color: #003366;
       color: white;
-      padding: 15px;
       text-align: center;
+      padding: 15px 0;
     }
-
     nav {
-      background: #009933; /* πράσινο */
-      padding: 10px;
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      background-color: #009933;
     }
-
     nav a {
       color: white;
       text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
+      padding: 14px 20px;
+      display: block;
     }
-
     nav a:hover {
-      text-decoration: underline;
+      background-color: #007a29;
     }
-
     main {
+      max-width: 900px;
+      margin: 20px auto;
       padding: 20px;
-      text-align: center;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-
-    h1 {
-      color: #004d99; /* μπλε */
-    }
-
-    footer {
-      background: #004d99; /* μπλε */
-      color: white;
+    h2 {
       text-align: center;
-      padding: 10px;
+      color: #003366;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
       margin-top: 20px;
+    }
+    table, th, td {
+      border: 1px solid #009933;
+    }
+    th, td {
+      padding: 10px;
+      text-align: center;
+    }
+    .total {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      color: #009933;
+    }
+    input.odds {
+      width: 70px;
+      padding: 5px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Football Fans</h1>
-    <p>Η σελίδα για τους φίλους του ποδοσφαίρου!</p>
+    <h1>Προγνωστικά Europa League</h1>
   </header>
 
   <nav>
-  <a href="europa-today.html">Europa League</a>
-  <a href="champions-league.html">Champions League</a>
-  <a href="prothlima.html">Πρωτάθλημα</a>
-</nav>
-  
+    <a href="#">Europa League</a>
+    <a href="#">Champions League</a>
+    <a href="#">Πρωτάθλημα</a>
+  </nav>
 
   <main>
-    <h2>Καλώς ήρθες!</h2>
-    <p>Εδώ θα βρεις νέα, αναλύσεις και προγνωστικά για το ποδόσφαιρο.</p>
+    <h2>Αγώνες Europa League - 24/09/2025</h2>
+    <table>
+      <tr>
+        <th>Αγώνας</th>
+        <th>Πρόβλεψη</th>
+        <th>Απόδοση</th>
+      </tr>
+      <tr>
+        <td>ΠΑΟΚ - Αντίπαλος</td>
+        <td>Νίκη ΠΑΟΚ</td>
+        <td><input type="number" step="0.01" class="odds" value="1.85" oninput="calculateTotal()"></td>
+      </tr>
+      <tr>
+        <td>Φενέρμπαχτσε - Αντίπαλος</td>
+        <td>Over 2.5</td>
+        <td><input type="number" step="0.01" class="odds" value="1.70" oninput="calculateTotal()"></td>
+      </tr>
+      <tr>
+        <td>Μπέτις - Αντίπαλος</td>
+        <td>Νίκη Μπέτις</td>
+        <td><input type="number" step="0.01" class="odds" value="2.10" oninput="calculateTotal()"></td>
+      </tr>
+    </table>
+
+    <div class="total">
+      Συνολική Απόδοση: <span id="totalOdds">0.00</span>
+    </div>
   </main>
 
-  <footer>
-    <p>© 2025 Football Fans</p>
-  </footer>
+  <script>
+    function calculateTotal() {
+      let odds = document.querySelectorAll(".odds");
+      let total = 1;
+      odds.forEach(input => {
+        let value = parseFloat(input.value);
+        if (!isNaN(value)) {
+          total *= value;
+        }
+      });
+      document.getElementById("totalOdds").innerText = total.toFixed(2);
+    }
+    calculateTotal();
+  </script>
 </body>
 </html>
