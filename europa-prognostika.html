@@ -1,109 +1,85 @@
 <!DOCTYPE html>
 <html lang="el">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Προγνωστικά Europa League - Football Fans</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background: #f4f4f4;
-            color: #222;
-        }
-        .container {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #007bff;
-            text-align: center;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 12px;
-            text-align: center;
-        }
-        th {
-            background: #007bff;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background: #f9f9f9;
-        }
-        .back-link {
-            display: block;
-            margin-top: 20px;
-            text-align: center;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Προγνωστικά Europa League</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: linear-gradient(to right, #007bff, #6f42c1, #ff7f50);
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    .date-box {
+      text-align: center;
+      font-size: 18px;
+      margin: 15px 0;
+      padding: 10px;
+      background: #e8f5e9;
+      border: 1px solid #007bff;
+      border-radius: 6px;
+      color: #007bff;
+      font-weight: bold;
+    }
+    table {
+      width: 90%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: center;
+    }
+    th {
+      background: #007bff;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background: #f2f2f2;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Προγνωστικά Europa League</h1>
-        <p>Δείτε τα προγνωστικά μας για τους 9 αγώνες του Europa League:</p>
-        <table>
-            <tr>
-                <th>Αγώνας</th>
-                <th>Ώρα</th>
-                <th>Πρόβλεψη</th>
-            </tr>
-            <tr>
-                <td>Λίβερπουλ - Ρόμα</td>
-                <td>19:45</td>
-                <td>Over 3.5</td>
-            </tr>
-            <tr>
-                <td>Άγιαξ - Μαρσέιγ</td>
-                <td>19:45</td>
-                <td>Goal/Goal</td>
-            </tr>
-            <tr>
-                <td>Λεβερκούζεν - Σπόρτινγκ</td>
-                <td>22:00</td>
-                <td>1</td>
-            </tr>
-            <tr>
-                <td>Μίλαν - Σέλτικ</td>
-                <td>22:00</td>
-                <td>1 & Over 1.5</td>
-            </tr>
-            <tr>
-                <td>Βιγιαρεάλ - Φενέρμπαχτσε</td>
-                <td>22:00</td>
-                <td>Over 2.5</td>
-            </tr>
-            <tr>
-                <td>Μπράιτον - Μονακό</td>
-                <td>22:00</td>
-                <td>Goal/Goal</td>
-            </tr>
-            <tr>
-                <td>Μπενφίκα - Γαλατάσαραϊ</td>
-                <td>22:00</td>
-                <td>Χ</td>
-            </tr>
-            <tr>
-                <td>Λάτσιο - Σαχτάρ</td>
-                <td>22:00</td>
-                <td>1</td>
-            </tr>
-            <tr>
-                <td>Άιντραχτ - Ολυμπιακός</td>
-                <td>22:00</td>
-                <td>Goal/Goal</td>
-            </tr>
-        </table>
-        <a href="index.html" class="back-link">⬅ Επιστροφή στην αρχική</a>
-    </div>
+  <header>
+    <h1>Σημερινά Προγνωστικά Europa League</h1>
+  </header>
+
+  <div class="date-box">
+    <p id="match-date"></p>
+  </div>
+
+  <table>
+    <tr>
+      <th>Αγώνας</th>
+      <th>Ώρα</th>
+      <th>Πρόταση</th>
+    </tr>
+    <tr><td>Λίβερπουλ – Ρόμα</td><td>19:45</td><td>Over 2.5</td></tr>
+    <tr><td>Άγιαξ – Μίλαν</td><td>22:00</td><td>Goal/Goal</td></tr>
+    <tr><td>Βιγιαρεάλ – Λεβερκούζεν</td><td>19:45</td><td>1Χ</td></tr>
+    <tr><td>Λάτσιο – Μαρσέιγ</td><td>22:00</td><td>Over 2.5</td></tr>
+    <tr><td>Μπενφίκα – Σπόρτινγκ</td><td>21:00</td><td>GG & Over 2.5</td></tr>
+    <tr><td>Σεβίλλη – Άιντραχτ</td><td>19:45</td><td>1</td></tr>
+    <tr><td>Άρσεναλ – Γαλατάσαραϊ</td><td>22:00</td><td>1 & Over 1.5</td></tr>
+    <tr><td>Φέγενορντ – Μπράιτον</td><td>21:00</td><td>X2</td></tr>
+    <tr><td>Παναθηναϊκός – Φενέρμπαχτσε</td><td>22:00</td><td>Under 2.5</td></tr>
+  </table>
+
+  <script>
+    // Βάζει αυτόματα την σημερινή ημερομηνία
+    const today = new Date();
+    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+    document.getElementById("match-date").textContent = 
+      "Αγώνες Europa League - " + today.toLocaleDateString("el-GR", options);
+  </script>
 </body>
 </html>
