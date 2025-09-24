@@ -2,77 +2,80 @@
 <html lang="el">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FootballFans</title>
+  <title>Europa League – 24 Σεπτεμβρίου 2025</title>
   <style>
     body {
       font-family: Arial, sans-serif;
+      background: #f4f4f9;
       margin: 0;
-      background: linear-gradient(to right, #28a745, #007bff, #6f42c1, #ff6600);
-      color: white;
+      padding: 0;
     }
-
     header {
-      background: #007bff;
-      padding: 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0;
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      background: #28a745;
-      padding: 10px;
-    }
-
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
+      background: linear-gradient(to right, #007bff, #6f42c1, #28a745, #ff9800);
       color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    .date-box {
+      text-align: center;
+      font-size: 18px;
+      margin: 15px 0;
+      padding: 10px;
+      background: #e8f5e9;
+      border: 1px solid #007bff;
+      border-radius: 6px;
+      color: #007bff;
       font-weight: bold;
     }
-
-    nav a:hover {
-      color: #ff6600; /* πορτοκαλί hover */
-    }
-
-    .container {
-      padding: 20px;
+    table {
+      width: 95%;
+      margin: 20px auto;
+      border-collapse: collapse;
       background: white;
-      color: black;
-      margin: 20px;
-      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-
-    footer {
-      background: #6f42c1;
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
       text-align: center;
-      padding: 15px;
-      margin-top: 20px;
+    }
+    th {
+      background: #007bff;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background: #f2f2f2;
+    }
+    .prediction {
+      font-weight: bold;
+      color: #28a745;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>FootballFans</h1>
+    <h1>Europa League – 24 Σεπτεμβρίου 2025</h1>
   </header>
 
-  <nav>
-    <a href="index.html">Αρχική</a>
-    <a href="europa-prognostika.html">Europa League</a>
-  </nav>
-
-  <div class="container">
-    <h2>Καλωσήρθατε στο FootballFans!</h2>
-    <p>Εδώ θα βρείτε νέα, ειδήσεις και προγνωστικά για το ποδόσφαιρο.</p>
+  <div class="date-box">
+    <p>Σήμερα: 24 Σεπτεμβρίου 2025</p>
   </div>
 
-  <footer>
-    <p>&copy; 2025 FootballFans</p>
-  </footer>
+  <table>
+    <tr>
+      <th>Αγώνας</th>
+      <th>Ώρα (Ελλάδα)</th>
+      <th>Πρόβλεψη</th>
+    </tr>
+    <tr><td>Μίντιλαντ – Στουρμ Γκρατς</td><td>19:45</td><td class="prediction">GG (Goal/Goal)</td></tr>
+    <tr><td>ΠΑΟΚ – Μακάμπι Τελ Αβίβ</td><td>19:45</td><td class="prediction">1 (Νίκη ΠΑΟΚ)</td></tr>
+    <tr><td>Ερυθρός Αστέρας – Σέλτικ</td><td>22:00</td><td class="prediction">Over 2.5</td></tr>
+    <tr><td>Μπράγκα – Φέγενορντ</td><td>22:00</td><td class="prediction">Χ (Ισοπαλία)</td></tr>
+    <tr><td>Ντιναμό Ζάγκρεμπ – Φενερμπαχτσέ</td><td>22:00</td><td class="prediction">GG</td></tr>
+    <tr><td>Μάλμε – Λουντογκόρετς</td><td>22:00</td><td class="prediction">2 (Νίκη Λουντογκόρετς)</td></tr>
+    <tr><td>Νις – Ρόμα</td><td>22:00</td><td class="prediction">2 (Νίκη Ρόμα)</td></tr>
+    <tr><td>Ρεάλ Μπέτις – Νότιγχαμ Φόρεστ</td><td>22:00</td><td class="prediction">Over 2.5</td></tr>
+    <tr><td>Φράιμπουργκ – Βασιλεία</td><td>22:00</td><td class="prediction">1 (Νίκη Φράιμπουργκ)</td></tr>
+  </table>
 </body>
 </html>
