@@ -2,27 +2,61 @@
 <html lang="el">
 <head>
   <meta charset="UTF-8">
-  <title>Προγνωστικά Πρωτάθλημα</title>
+  <title>Πρωτάθλημα</title>
   <style>
-    body { font-family: Arial, sans-serif; background-color: #f0f8f5; margin: 0; padding: 0; }
-    .header { background-color: #006400; color: white; text-align: center; padding: 15px; font-size: 20px; }
-    .menu { background-color: #003366; padding: 10px; text-align: center; }
-    .menu a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
-    .menu a:hover { text-decoration: underline; }
-    .info { text-align: center; margin-top: 40px; font-size: 18px; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e6f2ff;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #004d99;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    nav {
+      background: #006600;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      padding: 20px;
+      text-align: center;
+    }
+    .no-matches {
+      background: #ccffcc;
+      padding: 15px;
+      border-radius: 5px;
+      display: inline-block;
+      margin-top: 20px;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
+  <header>
+    <h1>Πρωτάθλημα</h1>
+  </header>
 
-  <div class="header">Προγνωστικά Πρωτάθλημα</div>
-
-  <div class="menu">
+  <!-- Δεύτερο μενού για γρήγορη επιλογή -->
+  <nav>
     <a href="europa-today.html">Europa League</a>
     <a href="champions.html">Champions League</a>
-    <a href="protathlima.html">Πρωτάθλημα</a>
-  </div>
+  </nav>
 
-  <div class="info">Δεν υπάρχουν διαθέσιμοι αγώνες σήμερα.</div>
-
+  <main>
+    <p class="no-matches">Δεν υπάρχουν διαθέσιμοι αγώνες σήμερα</p>
+  </main>
 </body>
 </html>
