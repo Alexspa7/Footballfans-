@@ -2,144 +2,128 @@
 <html lang="el">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SuperFootball Προγνωστικά</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f5f5f5;
+      background: #f7f7f7;
       margin: 0;
       padding: 0;
     }
     header {
-      background: linear-gradient(to right, #0044cc, #0077ff);
+      background: linear-gradient(to right, #0052cc, #007bff);
       color: white;
       text-align: center;
       padding: 15px;
-      font-size: 20px;
+      font-size: 22px;
       font-weight: bold;
     }
     nav {
       display: flex;
       justify-content: center;
-      background: #003399;
+      background: #004aad;
     }
     nav a {
       color: white;
+      padding: 12px 20px;
       text-decoration: none;
-      padding: 10px 15px;
       font-weight: bold;
     }
     nav a:hover {
-      background: #0055ff;
+      background: #0066ff;
     }
     .ad {
-      background: #ddd;
       text-align: center;
-      margin: 10px;
-      padding: 20px;
+      background: #ddd;
+      margin: 10px auto;
+      padding: 15px;
       font-size: 14px;
+      color: #333;
       border-radius: 5px;
+      width: 90%;
     }
-    .league {
+    .container {
       background: white;
-      margin: 15px;
+      width: 90%;
+      margin: 15px auto;
       padding: 15px;
       border-radius: 8px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
     }
-    .league h2 {
-      color: #0044cc;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 5px;
+    h2 {
+      color: #0052cc;
+      margin-bottom: 15px;
     }
     .match {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid #ddd;
       padding: 10px 0;
     }
-    .match img {
-      width: 30px;
-      height: 30px;
-      margin-right: 8px;
+    .match:last-child {
+      border: none;
     }
     .teams {
-      display: flex;
-      align-items: center;
       font-weight: bold;
+      font-size: 18px;
+    }
+    .time {
+      color: #444;
+      margin: 5px 0;
+      font-size: 14px;
     }
     .prediction {
       color: red;
       font-weight: bold;
     }
-    .odds {
+    .odd {
       color: green;
       font-weight: bold;
     }
     .total {
-      margin-top: 10px;
       font-weight: bold;
+      margin-top: 15px;
       font-size: 16px;
     }
   </style>
 </head>
 <body>
+  <header>SuperFootball Προγνωστικά</header>
 
-<header>SuperFootball Προγνωστικά</header>
+  <nav>
+    <a href="#">Europa League</a>
+    <a href="#">Πρωτάθλημα</a>
+    <a href="#">Champions League</a>
+  </nav>
 
-<nav>
-  <a href="#">Europa League</a>
-  <a href="#">Πρωτάθλημα</a>
-  <a href="#">Champions League</a>
-</nav>
+  <div class="ad">Διαφήμιση 728x90</div>
 
-<div class="ad">Διαφήμιση 728x90</div>
+  <div class="container">
+    <h2>Europa League (25/09/2025)</h2>
 
-<div class="league">
-  <h2>Europa League (25/09/2025)</h2>
-  
-  <div class="match">
-    <div class="teams">
-      <img src="https://upload.wikimedia.org/wikipedia/en/4/43/Panathinaikos_FC_logo.svg" alt="Παναθηναϊκός">
-      Παναθηναϊκός — Άστον Βίλα
+    <div class="match">
+      <div class="teams">Παναθηναϊκός — Άστον Βίλα</div>
+      <div class="time">Ώρα: 21:30</div>
+      <div>Πρόβλεψη: <span class="prediction">Χ</span></div>
+      <div>Απόδοση: <span class="odd">3.4</span></div>
     </div>
-    <div>
-      <div>Ώρα: 21:30</div>
-      <div>Πρόβλεψη: <span class="prediction">X</span></div>
-      <div>Απόδοση: <span class="odds">3.4</span></div>
-    </div>
-  </div>
 
-  <div class="match">
-    <div class="teams">
-      <img src="https://upload.wikimedia.org/wikipedia/en/6/6b/LOSC_Lille_logo.svg" alt="Λιλ">
-      Λιλ — Σπάρτα Πράγας
-    </div>
-    <div>
-      <div>Ώρα: 22:00</div>
+    <div class="match">
+      <div class="teams">Λιλ — Σπάρτα Πράγας</div>
+      <div class="time">Ώρα: 22:00</div>
       <div>Πρόβλεψη: <span class="prediction">Over 2.5</span></div>
-      <div>Απόδοση: <span class="odds">1.95</span></div>
+      <div>Απόδοση: <span class="odd">1.95</span></div>
     </div>
-  </div>
 
-  <div class="match">
-    <div class="teams">
-      <img src="https://upload.wikimedia.org/wikipedia/en/f/fd/Aston_Villa_FC_crest.svg" alt="Άλλος αγώνας">
-      Ρόμα — Άγιαξ
-    </div>
-    <div>
-      <div>Ώρα: 22:00</div>
+    <div class="match">
+      <div class="teams">Ρόμα — Άγιαξ</div>
+      <div class="time">Ώρα: 22:00</div>
       <div>Πρόβλεψη: <span class="prediction">Over 3.5</span></div>
-      <div>Απόδοση: <span class="odds">2.0</span></div>
+      <div>Απόδοση: <span class="odd">2.0</span></div>
     </div>
+
+    <div class="total">Συνολική απόδοση: 13.26</div>
   </div>
 
-  <div class="total">Συνολική απόδοση: 13.26</div>
-</div>
-
-<div class="ad">Διαφήμιση 300x250</div>
+  <div class="ad">Διαφήμιση 300x250</div>
 
 </body>
 </html>
