@@ -3,173 +3,173 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SuperFootball Προβλέψεις</title>
+  <title>SuperFootball Προγνωστικά</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f6f9;
       margin: 0;
-      padding: 0;
+      background: #f4f7fb;
+      color: #222;
     }
     header {
-      background: #004aad;
+      background: #003399;
       color: white;
       padding: 15px;
       text-align: center;
     }
     nav {
-      background: #00337a;
       display: flex;
       justify-content: center;
-      gap: 20px;
-      padding: 10px;
+      background: #0055cc;
     }
     nav a {
       color: white;
+      padding: 12px 18px;
       text-decoration: none;
       font-weight: bold;
     }
     nav a:hover {
-      text-decoration: underline;
+      background: #003399;
     }
-    main {
-      padding: 20px;
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 10px;
     }
-    section {
-      background: white;
-      margin-bottom: 20px;
+    .ad-banner {
+      background: #ddd;
+      color: #444;
+      text-align: center;
       padding: 15px;
+      margin: 20px 0;
       border-radius: 8px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      font-weight: bold;
     }
-    section h2 {
-      color: #004aad;
+    .league {
+      margin: 20px 0;
+      padding: 15px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .league h2 {
+      color: #0055cc;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 5px;
     }
     .match {
-      border-bottom: 1px solid #ddd;
-      padding: 10px 0;
+      margin: 12px 0;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
     }
     .match:last-child {
       border-bottom: none;
     }
     .prediction {
+      color: red;
       font-weight: bold;
-      color: #e63946;
     }
-    .odd {
+    .odds {
+      color: teal;
       font-weight: bold;
-      color: #2a9d8f;
     }
-    .total {
-      font-size: 1.1em;
+    .total-odds {
       font-weight: bold;
       margin-top: 10px;
-      color: #000;
-    }
-    footer {
-      background: #004aad;
-      color: white;
-      text-align: center;
-      padding: 10px;
-      margin-top: 20px;
-    }
-    /* Διαφημίσεις */
-    .ad {
-      margin: 20px 0;
-      text-align: center;
+      color: #222;
     }
   </style>
-
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3677664037155953"
-     crossorigin="anonymous"></script>
+  <script>
+    function showLeague(leagueId) {
+      const leagues = document.querySelectorAll('.league');
+      leagues.forEach(l => l.style.display = 'none');
+      document.getElementById(leagueId).style.display = 'block';
+    }
+    window.onload = () => {
+      showLeague('europa');
+    }
+  </script>
 </head>
 <body>
   <header>
-    <h1>SuperFootball Προβλέψεις</h1>
+    <h1>SuperFootball Προγνωστικά</h1>
   </header>
 
   <nav>
-    <a href="#europa">Europa League</a>
-    <a href="#league">Πρωτάθλημα</a>
-    <a href="#ucl">Champions League</a>
+    <a href="#" onclick="showLeague('europa')">Europa League</a>
+    <a href="#" onclick="showLeague('league')">Πρωτάθλημα</a>
+    <a href="#" onclick="showLeague('champions')">Champions League</a>
   </nav>
 
-  <main>
-    <!-- Διαφήμιση -->
-    <div class="ad">
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-3677664037155953"
-           data-ad-slot="1234567890"
-           data-ad-format="auto"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  <div class="container">
+
+    <div class="ad-banner">Διαφήμιση 728x90</div>
+
+    <!-- Europa League -->
+    <div class="league" id="europa">
+      <h2>Europa League (25/09/2025)</h2>
+      <div class="match">
+        <strong>Παναθηναϊκός — Άστον Βίλα</strong><br>
+        Πρόβλεψη: <span class="prediction">Χ</span><br>
+        Απόδοση: <span class="odds">3.4</span>
+      </div>
+      <div class="match">
+        <strong>Λιλ — Σπάρτα Πράγας</strong><br>
+        Πρόβλεψη: <span class="prediction">Over 2.5</span><br>
+        Απόδοση: <span class="odds">1.95</span>
+      </div>
+      <div class="match">
+        <strong>Άλλος αγώνας Europa</strong><br>
+        Πρόβλεψη: <span class="prediction">Over 3.5</span><br>
+        Απόδοση: <span class="odds">2.0</span>
+      </div>
+      <p class="total-odds">Συνολική απόδοση: 13.26</p>
     </div>
 
-    <section id="europa">
-      <h2>Europa League</h2>
-      <div class="matches" id="europa-matches"></div>
-      <p class="total">Συνολική απόδοση: <span id="europa-total">1.00</span></p>
-    </section>
-
-    <section id="league">
-      <h2>Πρωτάθλημα</h2>
-      <div class="matches" id="league-matches"></div>
-      <p class="total">Συνολική απόδοση: <span id="league-total">1.00</span></p>
-    </section>
-
-    <section id="ucl">
-      <h2>Champions League</h2>
-      <div class="matches" id="ucl-matches"></div>
-      <p class="total">Συνολική απόδοση: <span id="ucl-total">1.00</span></p>
-    </section>
-
-    <!-- Διαφήμιση -->
-    <div class="ad">
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-3677664037155953"
-           data-ad-slot="9876543210"
-           data-ad-format="auto"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <!-- Πρωτάθλημα -->
+    <div class="league" id="league">
+      <h2>Πρωτάθλημα (27/09/2025)</h2>
+      <div class="match">
+        <strong>Λίβερπουλ — Γουέστ Χαμ</strong><br>
+        Πρόβλεψη: <span class="prediction">Over 3.5</span><br>
+        Απόδοση: <span class="odds">2.1</span>
+      </div>
+      <div class="match">
+        <strong>Λειψία — Φράιμπουργκ</strong><br>
+        Πρόβλεψη: <span class="prediction">2</span><br>
+        Απόδοση: <span class="odds">3.6</span>
+      </div>
+      <div class="match">
+        <strong>Μάιντζ — Στουτγκάρδη</strong><br>
+        Πρόβλεψη: <span class="prediction">Over 2.5</span><br>
+        Απόδοση: <span class="odds">1.85</span>
+      </div>
+      <p class="total-odds">Συνολική απόδοση: 13.99</p>
     </div>
-  </main>
 
-  <footer>
-    <p>© 2025 SuperFootball.gr - Προβλέψεις για στοίχημα</p>
-  </footer>
+    <!-- Champions League -->
+    <div class="league" id="champions">
+      <h2>Champions League (30/09/2025)</h2>
+      <div class="match">
+        <strong>Αταλάντα — Μίλαν</strong><br>
+        Πρόβλεψη: <span class="prediction">1</span><br>
+        Απόδοση: <span class="odds">2.0</span>
+      </div>
+      <div class="match">
+        <strong>Ίντερ — Μπενφίκα</strong><br>
+        Πρόβλεψη: <span class="prediction">1</span><br>
+        Απόδοση: <span class="odds">1.75</span>
+      </div>
+      <div class="match">
+        <strong>Άγιαξ — Σέλτικ</strong><br>
+        Πρόβλεψη: <span class="prediction">1</span><br>
+        Απόδοση: <span class="odds">1.65</span>
+      </div>
+      <p class="total-odds">Συνολική απόδοση: 5.78</p>
+    </div>
 
-  <script>
-  async function loadMatches() {
-    const response = await fetch("matches.json");
-    const data = await response.json();
+    <div class="ad-banner">Διαφήμιση 300x250</div>
 
-    function renderMatches(matches, containerId, totalId) {
-      const container = document.getElementById(containerId);
-      container.innerHTML = "";
-      let total = 1;
-
-      matches.forEach(match => {
-        const article = document.createElement("article");
-        article.className = "match";
-        article.innerHTML = `
-          <h3>${match.teams}</h3>
-          <p>Πρόβλεψη: <span class="prediction">${match.prediction}</span></p>
-          <p>Απόδοση: <span class="odd">${match.odd}</span></p>
-        `;
-        container.appendChild(article);
-        total *= match.odd;
-      });
-
-      document.getElementById(totalId).textContent = total.toFixed(2);
-    }
-
-    renderMatches(data.europa, "europa-matches", "europa-total");
-    renderMatches(data.league, "league-matches", "league-total");
-    renderMatches(data.ucl, "ucl-matches", "ucl-total");
-  }
-
-  loadMatches();
-  </script>
+  </div>
 </body>
 </html>
