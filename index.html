@@ -1,286 +1,187 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="el">
 <head>
-  <!-- Google AdSense Global -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3677664037155953"
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Football Fans</title>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3677664037155953"
      crossorigin="anonymous"></script>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Football Fans - Προγνωστικά</title>
 
-<style>
-  /* Χρώματα: μπλε και πράσινο */
-  :root{
-    --blue:#0b4f8a;      /* κύριο μπλε */
-    --green:#0b8a2b;     /* κύριο πράσινο */
-    --light:#eef7f3;
-    --card-bg:#ffffff;
-    --muted:#666;
-  }
+  <!-- Στυλ -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f3f8f6;
+    }
 
-  html,body{height:100%;}
-  body{
-    margin:0;
-    font-family:Arial,Helvetica,sans-serif;
-    background:var(--light);
-    color:#033;
-    -webkit-font-smoothing:antialiased;
-  }
+    header {
+      background: #004080;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
 
-  header.site-header{
-    background:var(--blue);
-    color:#fff;
-    padding:18px 12px;
-    text-align:center;
-  }
-  header.site-header h1{margin:0;font-size:20px;}
-  header.site-header p{margin:6px 0 0;font-size:13px;opacity:.95;}
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
 
-  nav.main-nav{
-    background:var(--green);
-    display:flex;
-    justify-content:center;
-    gap:0;
-    padding:10px 6px;
-  }
-  nav.main-nav a{
-    display:inline-block;
-    color:#fff;
-    text-decoration:none;
-    padding:12px 18px;
-    font-size:18px;
-    font-weight:700;
-  }
-  nav.main-nav a.active{
-    background:rgba(255,255,255,0.07);
-    border-bottom:3px solid rgba(255,255,255,0.12);
-  }
+    header p {
+      margin: 5px 0 0;
+      font-size: 16px;
+    }
 
-  .container{
-    max-width:900px;
-    margin:18px auto;
-    padding:0 14px;
-  }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #007a33;
+    }
 
-  .page-title{
-    text-align:center;
-    margin:8px 0 18px;
-  }
-  .date-line{ text-align:center; color:var(--muted); margin-bottom:16px; }
+    nav a {
+      color: white;
+      padding: 15px 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
 
-  /* Πάνελ αγώνα */
-  .match{
-    background:var(--card-bg);
-    border:2px solid var(--green);
-    border-radius:8px;
-    padding:14px;
-    margin-bottom:12px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.04);
-  }
-  .match h3{margin:0 0 6px;color:var(--green);}
-  .match p{margin:6px 0;color:#033;}
-  .prediction{font-weight:600;color:var(--blue);}
-  .odd{font-weight:700;color:#0a6b00;}
+    nav a:hover, nav a.active {
+      background: #005a26;
+    }
 
-  .total{
-    background:var(--blue);
-    color:#fff;
-    padding:12px;
-    border-radius:6px;
-    margin-top:14px;
-    text-align:center;
-    font-weight:700;
-  }
+    .container {
+      padding: 20px;
+    }
 
-  /* Champions page background */
-  .champions-bg{
-    min-height:250px;
-    background-size:cover;
-    background-position:center;
-    border-radius:8px;
-    margin-bottom:12px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#fff;
-    text-shadow:0 2px 6px rgba(0,0,0,0.4);
-    font-size:20px;
-    font-weight:700;
-  }
+    .page-title {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
 
-  .empty-msg{
-    background:#dbf7dc;
-    border:1px solid #b6f0b5;
-    color:#046103;
-    padding:12px;
-    border-radius:6px;
-    text-align:center;
-  }
+    .date-line {
+      margin-bottom: 15px;
+      font-style: italic;
+      color: #555;
+    }
 
-  footer{ text-align:center; padding:20px 10px; color:#fff; background:var(--blue); margin-top:20px; }
+    article.match {
+      border: 2px solid #007a33;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 15px;
+      background: #fff;
+    }
 
-  /* Responsive */
-  @media (max-width:600px){
-    nav.main-nav a{font-size:15px; padding:10px 12px;}
-    .container{padding:0 12px;}
-  }
-</style>
+    article.match h3 {
+      margin: 0 0 5px;
+      color: #004080;
+    }
+
+    .ads-box {
+      margin: 20px 0;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
 
-<header class="site-header">
-  <h1>Football Fans</h1>
-  <p>Η σελίδα για τους φίλους του ποδοσφαίρου</p>
-</header>
+  <!-- Κεφαλίδα -->
+  <header>
+    <h1>Football Fans</h1>
+    <p>Η σελίδα για τους φίλους του ποδοσφαίρου</p>
+  </header>
 
-<nav class="main-nav" role="navigation" aria-label="Κύριο μενού">
-  <a href="#europa" id="link-europa" class="active">Europa League</a>
-  <a href="#champions" id="link-champions">Champions League</a>
-  <a href="#protathlima" id="link-protathlima">Πρωτάθλημα</a>
-</nav>
+  <!-- Μενού -->
+  <nav>
+    <a href="#europa" class="active">Europa League</a>
+    <a href="#champions">Champions League</a>
+    <a href="#protathlima">Πρωτάθλημα</a>
+  </nav>
 
-<div class="container">
-  <!-- ΔΙΑΦΗΜΙΣΗ ΠΑΝΩ ΑΠΟ ΤΑ ΠΑΙΧΝΙΔΙΑ -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-3677664037155953"
-     data-ad-slot="1234567890"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-  <!-- EUROPA SECTION -->
-  <section id="europa" class="page" aria-labelledby="europa-title">
-    <h2 class="page-title" id="europa-title">Προγνωστικά Europa League</h2>
-    <div class="date-line" id="europa-date">Ημερομηνία: </div>
-
-    <!-- MATCH 1 -->
-    <article class="match" id="m1">
-      <h3>ΠΑΟΚ - Μακάμπι Τελ Αβίβ</h3>
-      <p><strong>Πρόβλεψη:</strong> <span class="prediction">Νίκη ΠΑΟΚ</span></p>
-      <p><strong>Απόδοση:</strong> <span class="odd" data-odd="2.10">2.10</span></p>
-    </article>
-
-    <!-- MATCH 2 -->
-    <article class="match" id="m2">
-      <h3>Ντιναμό Ζάγκρεμπ - Φενερμπαχτσέ</h3>
-      <p><strong>Πρόβλεψη:</strong> <span class="prediction">GG (Goal/Goal)</span></p>
-      <p><strong>Απόδοση:</strong> <span class="odd" data-odd="1.85">1.85</span></p>
-    </article>
-
-    <!-- MATCH 3 -->
-    <article class="match" id="m3">
-      <h3>Ρεάλ Μπέτις - Νότιγχαμ Φόρεστ</h3>
-      <p><strong>Πρόβλεψη:</strong> <span class="prediction">Over 2.5</span></p>
-      <p><strong>Απόδοση:</strong> <span class="odd" data-odd="2.05">2.05</span></p>
-    </article>
-
-    <div class="total" id="total-odd">Συνολική Απόδοση: <span id="total-value">-</span></div>
-  </section>
-
-  <!-- CHAMPIONS SECTION -->
-  <section id="champions" class="page" style="display:none;" aria-labelledby="champions-title">
-    <div class="champions-bg" id="champ-bg">
-      Προγνωστικά Champions League
+  <div class="container">
+    <!-- Διαφήμιση -->
+    <div class="ads-box">
+      <!-- ΔΙΑΦΗΜΙΣΗ -->
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-3677664037155953"
+          data-ad-slot="1234567890"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
     </div>
 
-    <div class="date-line" id="champions-date">Ημερομηνία: </div>
+    <!-- EUROPA SECTION -->
+    <section id="europa" class="page">
+      <h2 class="page-title">Προγνωστικά Europa League</h2>
+      <div class="date-line">Ημερομηνία: 25 Σεπτεμβρίου 2025</div>
 
-    <p class="empty-msg">Δεν υπάρχουν διαθέσιμοι αγώνες σήμερα.</p>
-  </section>
+      <article class="match">
+        <h3>ΠΑΟΚ - Μακάμπι Τελ Αβίβ</h3>
+        <p><strong>Πρόβλεψη:</strong> Νίκη ΠΑΟΚ</p>
+        <p><strong>Απόδοση:</strong> 2.10</p>
+      </article>
 
-  <!-- PROTATHLIMA SECTION -->
-  <section id="protathlima" class="page" style="display:none;" aria-labelledby="protathlima-title">
-    <h2 class="page-title" id="protathlima-title">Πρωτάθλημα</h2>
-    <div class="date-line" id="protathlima-date">Ημερομηνία: </div>
-    <p class="empty-msg">Δεν υπάρχουν διαθέσιμοι αγώνες σήμερα.</p>
-  </section>
-</div>
+      <article class="match">
+        <h3>Ντιναμό Ζάγκρεμπ - Φενερμπαχτσέ</h3>
+        <p><strong>Πρόβλεψη:</strong> GG (Goal/Goal)</p>
+        <p><strong>Απόδοση:</strong> 1.85</p>
+      </article>
 
-<footer>
-  © <span id="year"></span> Football Fans
-</footer>
+      <article class="match">
+        <h3>Ρεάλ Μπέτις - Νότιγχαμ Φόρεστ</h3>
+        <p><strong>Πρόβλεψη:</strong> Over 2.5</p>
+        <p><strong>Απόδοση:</strong> 2.05</p>
+      </article>
+    </section>
 
-<script>
-  // --- Βοηθητικά: εμφάνιση ημερομηνίας στην ελληνική μορφή ---
-  function formatGreekDate(d) {
-    try {
-      return d.toLocaleDateString('el-GR', { day:'2-digit', month:'long', year:'numeric' });
-    } catch(e) {
-      return d.getDate() + '/' + (d.getMonth()+1) + '/' + d.getFullYear();
-    }
-  }
-  const today = new Date();
-  document.getElementById('europa-date').textContent = 'Ημερομηνία: ' + formatGreekDate(today);
-  document.getElementById('champions-date').textContent = 'Ημερομηνία: ' + formatGreekDate(today);
-  document.getElementById('protathlima-date').textContent = 'Ημερομηνία: ' + formatGreekDate(today);
-  document.getElementById('year').textContent = today.getFullYear();
+    <!-- CHAMPIONS SECTION -->
+    <section id="champions" class="page" style="display:none;">
+      <h2 class="page-title">Προγνωστικά Champions League</h2>
+      <div class="date-line">Ημερομηνία: 26 Σεπτεμβρίου 2025</div>
 
-  // --- Υπολογισμός συνολικής απόδοσης (product των odd) ---
-  function calculateTotal(){
-    const oddEls = document.querySelectorAll('.odd');
-    let total = 1;
-    oddEls.forEach(o => {
-      const val = parseFloat(o.getAttribute('data-odd')) || parseFloat(o.textContent) || 1;
-      total *= val;
+      <article class="match">
+        <h3>Μάντσεστερ Σίτι - Μπάγερν</h3>
+        <p><strong>Πρόβλεψη:</strong> Over 2.5</p>
+        <p><strong>Απόδοση:</strong> 1.70</p>
+      </article>
+    </section>
+
+    <!-- PROTATHLIMA SECTION -->
+    <section id="protathlima" class="page" style="display:none;">
+      <h2 class="page-title">Προγνωστικά Πρωτάθλημα</h2>
+      <div class="date-line">Ημερομηνία: 27 Σεπτεμβρίου 2025</div>
+
+      <article class="match">
+        <h3>Ολυμπιακός - ΑΕΚ</h3>
+        <p><strong>Πρόβλεψη:</strong> Νίκη Ολυμπιακού</p>
+        <p><strong>Απόδοση:</strong> 2.20</p>
+      </article>
+    </section>
+  </div>
+
+  <script>
+    // Εναλλαγή μενού
+    const links = document.querySelectorAll("nav a");
+    const pages = document.querySelectorAll(".page");
+
+    links.forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        links.forEach(l => l.classList.remove("active"));
+        link.classList.add("active");
+
+        pages.forEach(page => page.style.display = "none");
+        const target = document.querySelector(link.getAttribute("href"));
+        target.style.display = "block";
+      });
     });
-    // Στρογγυλοποίηση 2 δεκαδικά
-    const totalRounded = Math.round(total * 100) / 100;
-    document.getElementById('total-value').textContent = totalRounded.toFixed(2);
-  }
-  calculateTotal();
-
-  // --- Μενού: εμφάνιση / απόκρυψη sections (χωρίς reload) ---
-  const links = {
-    'link-europa': document.getElementById('link-europa'),
-    'link-champions': document.getElementById('link-champions'),
-    'link-protathlima': document.getElementById('link-protathlima')
-  };
-  const sections = {
-    'link-europa': document.getElementById('europa'),
-    'link-champions': document.getElementById('champions'),
-    'link-protathlima': document.getElementById('protathlima')
-  };
-
-  function showSection(key){
-    // hide all
-    Object.values(sections).forEach(s => s.style.display = 'none');
-    // remove active class
-    Object.values(links).forEach(a => a.classList.remove('active'));
-    // show selected
-    sections[key].style.display = '';
-    links[key].classList.add('active');
-    // scroll top for mobile
-    window.scrollTo({ top:0, behavior:'smooth' });
-  }
-
-  Object.keys(links).forEach(k => {
-    links[k].addEventListener('click', function(e){
-      e.preventDefault();
-      showSection(k);
-      // update URL hash
-      location.hash = k;
-    });
-  });
-
-  // Check URL hash on load
-  const hashKey = {
-    '#europa':'link-europa',
-    '#champions':'link-champions',
-    '#protathlima':'link-protathlima'
-  };
-  const initial = hashKey[location.hash] || 'link-europa';
-  showSection(initial);
-
-  // --- Champions background image ---
-  // Αν έχεις ανεβάσει στο repo μια εικόνα με όνομα 'champions-bg.jpg', αυτή η γραμμή τη χρησιμοποιεί.
-  // Αν δεν την έχεις, απλά αγνόησέ την ή άλλαξέ τη στο ίδιο folder.
-  const champBgEl = document.getElementById('champ-bg');
-  champBgEl.style.backgroundImage = "url('champions-bg.jpg')"; // ανέβασε champions-bg.jpg στο repo root
-  champBgEl.style.backgroundColor = "var(--blue)"; // fallback
-
-</script>
-
+  </script>
 </body>
 </html>
