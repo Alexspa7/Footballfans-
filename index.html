@@ -7,169 +7,139 @@
   <style>
     body {
       font-family: Arial, sans-serif;
+      background: #f5f5f5;
       margin: 0;
-      background: #f4f7fb;
-      color: #222;
+      padding: 0;
     }
     header {
-      background: #003399;
+      background: linear-gradient(to right, #0044cc, #0077ff);
       color: white;
-      padding: 15px;
       text-align: center;
+      padding: 15px;
+      font-size: 20px;
+      font-weight: bold;
     }
     nav {
       display: flex;
       justify-content: center;
-      background: #0055cc;
+      background: #003399;
     }
     nav a {
       color: white;
-      padding: 12px 18px;
       text-decoration: none;
+      padding: 10px 15px;
       font-weight: bold;
     }
     nav a:hover {
-      background: #003399;
+      background: #0055ff;
     }
-    .container {
-      max-width: 900px;
-      margin: 20px auto;
-      padding: 10px;
-    }
-    .ad-banner {
+    .ad {
       background: #ddd;
-      color: #444;
       text-align: center;
-      padding: 15px;
-      margin: 20px 0;
-      border-radius: 8px;
-      font-weight: bold;
+      margin: 10px;
+      padding: 20px;
+      font-size: 14px;
+      border-radius: 5px;
     }
     .league {
-      margin: 20px 0;
+      background: white;
+      margin: 15px;
       padding: 15px;
-      background: #fff;
       border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
     }
     .league h2 {
-      color: #0055cc;
+      color: #0044cc;
       border-bottom: 2px solid #eee;
       padding-bottom: 5px;
     }
     .match {
-      margin: 12px 0;
-      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       border-bottom: 1px solid #eee;
+      padding: 10px 0;
     }
-    .match:last-child {
-      border-bottom: none;
+    .match img {
+      width: 30px;
+      height: 30px;
+      margin-right: 8px;
+    }
+    .teams {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
     }
     .prediction {
       color: red;
       font-weight: bold;
     }
     .odds {
-      color: teal;
+      color: green;
       font-weight: bold;
     }
-    .total-odds {
-      font-weight: bold;
+    .total {
       margin-top: 10px;
-      color: #222;
+      font-weight: bold;
+      font-size: 16px;
     }
   </style>
-  <script>
-    function showLeague(leagueId) {
-      const leagues = document.querySelectorAll('.league');
-      leagues.forEach(l => l.style.display = 'none');
-      document.getElementById(leagueId).style.display = 'block';
-    }
-    window.onload = () => {
-      showLeague('europa');
-    }
-  </script>
 </head>
 <body>
-  <header>
-    <h1>SuperFootball Προγνωστικά</h1>
-  </header>
 
-  <nav>
-    <a href="#" onclick="showLeague('europa')">Europa League</a>
-    <a href="#" onclick="showLeague('league')">Πρωτάθλημα</a>
-    <a href="#" onclick="showLeague('champions')">Champions League</a>
-  </nav>
+<header>SuperFootball Προγνωστικά</header>
 
-  <div class="container">
+<nav>
+  <a href="#">Europa League</a>
+  <a href="#">Πρωτάθλημα</a>
+  <a href="#">Champions League</a>
+</nav>
 
-    <div class="ad-banner">Διαφήμιση 728x90</div>
+<div class="ad">Διαφήμιση 728x90</div>
 
-    <!-- Europa League -->
-    <div class="league" id="europa">
-      <h2>Europa League (25/09/2025)</h2>
-      <div class="match">
-        <strong>Παναθηναϊκός — Άστον Βίλα</strong><br>
-        Πρόβλεψη: <span class="prediction">Χ</span><br>
-        Απόδοση: <span class="odds">3.4</span>
-      </div>
-      <div class="match">
-        <strong>Λιλ — Σπάρτα Πράγας</strong><br>
-        Πρόβλεψη: <span class="prediction">Over 2.5</span><br>
-        Απόδοση: <span class="odds">1.95</span>
-      </div>
-      <div class="match">
-        <strong>Άλλος αγώνας Europa</strong><br>
-        Πρόβλεψη: <span class="prediction">Over 3.5</span><br>
-        Απόδοση: <span class="odds">2.0</span>
-      </div>
-      <p class="total-odds">Συνολική απόδοση: 13.26</p>
+<div class="league">
+  <h2>Europa League (25/09/2025)</h2>
+  
+  <div class="match">
+    <div class="teams">
+      <img src="https://upload.wikimedia.org/wikipedia/en/4/43/Panathinaikos_FC_logo.svg" alt="Παναθηναϊκός">
+      Παναθηναϊκός — Άστον Βίλα
     </div>
-
-    <!-- Πρωτάθλημα -->
-    <div class="league" id="league">
-      <h2>Πρωτάθλημα (27/09/2025)</h2>
-      <div class="match">
-        <strong>Λίβερπουλ — Γουέστ Χαμ</strong><br>
-        Πρόβλεψη: <span class="prediction">Over 3.5</span><br>
-        Απόδοση: <span class="odds">2.1</span>
-      </div>
-      <div class="match">
-        <strong>Λειψία — Φράιμπουργκ</strong><br>
-        Πρόβλεψη: <span class="prediction">2</span><br>
-        Απόδοση: <span class="odds">3.6</span>
-      </div>
-      <div class="match">
-        <strong>Μάιντζ — Στουτγκάρδη</strong><br>
-        Πρόβλεψη: <span class="prediction">Over 2.5</span><br>
-        Απόδοση: <span class="odds">1.85</span>
-      </div>
-      <p class="total-odds">Συνολική απόδοση: 13.99</p>
+    <div>
+      <div>Ώρα: 21:30</div>
+      <div>Πρόβλεψη: <span class="prediction">X</span></div>
+      <div>Απόδοση: <span class="odds">3.4</span></div>
     </div>
-
-    <!-- Champions League -->
-    <div class="league" id="champions">
-      <h2>Champions League (30/09/2025)</h2>
-      <div class="match">
-        <strong>Αταλάντα — Μίλαν</strong><br>
-        Πρόβλεψη: <span class="prediction">1</span><br>
-        Απόδοση: <span class="odds">2.0</span>
-      </div>
-      <div class="match">
-        <strong>Ίντερ — Μπενφίκα</strong><br>
-        Πρόβλεψη: <span class="prediction">1</span><br>
-        Απόδοση: <span class="odds">1.75</span>
-      </div>
-      <div class="match">
-        <strong>Άγιαξ — Σέλτικ</strong><br>
-        Πρόβλεψη: <span class="prediction">1</span><br>
-        Απόδοση: <span class="odds">1.65</span>
-      </div>
-      <p class="total-odds">Συνολική απόδοση: 5.78</p>
-    </div>
-
-    <div class="ad-banner">Διαφήμιση 300x250</div>
-
   </div>
+
+  <div class="match">
+    <div class="teams">
+      <img src="https://upload.wikimedia.org/wikipedia/en/6/6b/LOSC_Lille_logo.svg" alt="Λιλ">
+      Λιλ — Σπάρτα Πράγας
+    </div>
+    <div>
+      <div>Ώρα: 22:00</div>
+      <div>Πρόβλεψη: <span class="prediction">Over 2.5</span></div>
+      <div>Απόδοση: <span class="odds">1.95</span></div>
+    </div>
+  </div>
+
+  <div class="match">
+    <div class="teams">
+      <img src="https://upload.wikimedia.org/wikipedia/en/f/fd/Aston_Villa_FC_crest.svg" alt="Άλλος αγώνας">
+      Ρόμα — Άγιαξ
+    </div>
+    <div>
+      <div>Ώρα: 22:00</div>
+      <div>Πρόβλεψη: <span class="prediction">Over 3.5</span></div>
+      <div>Απόδοση: <span class="odds">2.0</span></div>
+    </div>
+  </div>
+
+  <div class="total">Συνολική απόδοση: 13.26</div>
+</div>
+
+<div class="ad">Διαφήμιση 300x250</div>
+
 </body>
 </html>
