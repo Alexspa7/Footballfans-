@@ -6,113 +6,37 @@
   <title>Προγνωστικά Champions League</title>
   <style>
     body {
-      <h2>Αγώνες & Προβλέψεις Champions League</h2>
-<div id="matches"></div>
-
-<script src="update-matches.js"></script>
-      <h2>Αγώνες & Προβλέψεις Champions League</h2>
-<div id="matches"></div>
-
-<script src="update-matches.js"></script>
-      <script>
-  async function loadMatches() {
-    try {
-      const response = await fetch("api/matches.json");
-      const data = await response.json();
-
-      const today = new Date().toISOString().split("T")[0]; // σήμερα
-      const championsMatches = data.matches.filter(
-        m => m.date === today && m.competition === "Champions League"
-      );
-
-      const container = document.querySelector(".content");
-
-      if (championsMatches.length === 0) {
-        container.innerHTML += `<p><em>Δεν υπάρχουν σημερινοί αγώνες Champions League.</em></p>`;
-        return;
-      }
-
-      let html = "<ul>";
-      championsMatches.forEach(match => {
-        html += `<li><strong>${match.home}</strong> vs <strong>${match.away}</strong> 
-        (${match.time}) - Πρόβλεψη: ${match.prediction}</li>`;
-      });
-      html += "</ul>";
-
-      container.innerHTML += html;
-
-    } catch (error) {
-      console.error("Σφάλμα:", error);
-    }
-  }
-
-  loadMatches();
-</script>
       font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
       background: #f5f5f5;
-    }
-    header {
-      background: green;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      font-size: 20px;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      background: #003366;
-    }
-    nav a {
-      color: white;
-      padding: 14px 20px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      background: #0055aa;
-    }
-    .content {
+      margin: 0;
       padding: 20px;
-      text-align: center;
     }
-    .ads {
-      margin: 20px auto;
+    h2 {
+      color: #222;
+    }
+    #matches {
+      background: #fff;
       padding: 15px;
-      background: #eaeaea;
-      text-align: center;
-      max-width: 600px;
-      border: 1px dashed #aaa;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
-    footer {
-      background: #003366;
-      color: white;
-      text-align: center;
-      padding: 10px;
-      margin-top: 20px;
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+    li:last-child {
+      border-bottom: none;
     }
   </style>
 </head>
 <body>
+  <h2>Αγώνες & Προβλέψεις Champions League</h2>
+  <div id="matches"></div>
 
-  <header>
-    ⚽ Προγνωστικά Champions League
-  </header>
-
-  <nav>
-    <a href="index.html">Αρχική</a>
-    <a href="champions.html">Champions League</a>
-    <a href="europa-today.html">Europa League</a>
-    <a href="protathlima.html">Conference League</a>
-  </nav>
-
-  <div class="ads">
-    🔸 Χώρος για Διαφήμιση (π.χ. Google Ads) 🔸
-  </div>
-
-  <div class="content">
-    <h2>Αγώνες & Προβλέψεις Champions League</h2>
-    <p>Εδώ θα εμφανίζονται οι διαθέσιμοι αγώνες και τα προγνωστικά για το Champions League.</p>
-    <p><em>(Αν δεν υπάρχουν σημερινοί αγώνες
+  <script src="update-matches.js"></script>
+</body>
+</html>
