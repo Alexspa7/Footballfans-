@@ -7,48 +7,61 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f6f9;
+      background: linear-gradient(135deg, #001f3f, #00509e);
       margin: 0;
       padding: 0;
+      color: #fff;
     }
 
     /* Μενού */
     nav {
-      background-color: #003366;
-      padding: 10px;
+      background-color: rgba(0, 0, 50, 0.9);
+      padding: 12px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.4);
     }
     nav a {
-      color: white;
+      color: #fff;
       text-decoration: none;
       margin: 0 15px;
       font-weight: bold;
+      font-size: 16px;
+      transition: color 0.3s;
     }
     nav a:hover {
-      text-decoration: underline;
+      color: #ffd700;
     }
 
     h2 {
       text-align: center;
-      margin: 20px 0;
-      color: #003366;
+      margin: 25px 0;
+      font-size: 24px;
+      color: #ffd700;
     }
 
-    /* Κάρτες Αγώνων */
+    /* Container */
     #matches {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 15px;
+      gap: 20px;
       padding: 20px;
     }
 
+    /* Κάρτες Αγώνων */
     .match-card {
-      background: white;
-      border-radius: 8px;
-      padding: 15px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       width: 90%;
-      max-width: 500px;
+      max-width: 520px;
+      color: #001f3f;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .match-card:hover {
+      transform: scale(1.03);
     }
 
     .match-card strong {
@@ -58,6 +71,15 @@
     .prediction {
       font-style: italic;
       color: #cc0000;
+      margin-top: 8px;
+      display: block;
+    }
+
+    .date-time {
+      font-size: 14px;
+      font-weight: bold;
+      color: #00509e;
+      margin-bottom: 5px;
     }
   </style>
 </head>
@@ -65,14 +87,14 @@
 
   <!-- Μενού -->
   <nav>
-    <a href="index.html">Αρχική</a>
-    <a href="champions.html">Champions League</a>
-    <a href="europa-today.html">Europa League</a>
-    <a href="conference.html">Conference League</a>
-    <a href="predictions.html">Προγνωστικά</a>
+    <a href="index.html">🏠 Αρχική</a>
+    <a href="champions.html">⭐ Champions League</a>
+    <a href="europa-today.html">⚽ Europa League</a>
+    <a href="conference.html">🌍 Conference League</a>
+    <a href="predictions.html">📊 Προγνωστικά</a>
   </nav>
 
-  <h2>⚽ Αγώνες & Προβλέψεις Champions League</h2>
+  <h2>⭐ Αγώνες & Προβλέψεις Champions League</h2>
   <div id="matches"></div>
 
   <script src="update-matches.js"></script>
