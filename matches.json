@@ -1,18 +1,29 @@
 [
   {
     "id": 1,
-    "home": "ΠΑΟ",
+    "home": "ΠΑΟΚ",
     "away": "Ολυμπιακός",
-    "home_odds": 1.80,
-    "away_odds": 4.20,
-    "draw_odds": 3.60
+    "home_odds": 1.8,
+    "away_odds": 4.2,
+    "draw_odds": 3.6,
+    "prediction": "Νίκη ΠΑΟΚ"
   },
   {
     "id": 2,
     "home": "ΑΕΚ",
     "away": "ΠΑΟΚ",
-    "home_odds": 2.10,
-    "away_odds": 3.10,
-    "draw_odds": 3.40
+    "home_odds": 2.1,
+    "away_odds": 3.1,
+    "draw_odds": 3.4,
+    "prediction": "Νίκη ΑΕΚ"
+  },
+  {
+    "id": 3,
+    "home": "Παναθηναϊκός",
+    "away": "Ατρόμητος",
+    "home_odds": 1.5,
+    "away_odds": 6,
+    "draw_odds": 4.2,
+    "prediction": "Νίκη Παναθηναϊκός"
   }
 ]
