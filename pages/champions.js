@@ -1,42 +1,25 @@
-import { useEffect, useState } from "react";
+export default function Champions() {
+  const [matches, setMatches] = React.useState([]);
 
-export default function ChampionsLeague() {
-  const [matches, setMatches] = useState([]);
-
-  useEffect(() => {
-    fetch("/matches.json") // εδώ μπορείς να βάλεις το API link που έχεις
+  React.useEffect(() => {
+    fetch("/matches.json")   // <-- Εδώ δείχνει στο αρχείο σου
       .then((res) => res.json())
-      .then((data) => {
-        setMatches(data.results[0].matches || []);
-      })
-      .catch((err) => console.error("Error loading matches:", err));
+      .then((data) => setMatches(data))
+      .catch((err) => console.error("Σφάλμα φόρτωσης:", err));
   }, []);
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Champions League - Αγώνες</h1>
-      <table border="1" cellPadding="8">
-        <thead>
-          <tr>
-            <th>Ημερομηνία</th>
-            <th>Γηπεδούχος</th>
-            <th>Φιλοξενούμενος</th>
-            <th>Σκορ</th>
-          </tr>
-        </thead>
-        <tbody>
-          {matches.map((match, i) => (
-            <tr key={i}>
-              <td>{new Date(match.utcDate).toLocaleDateString("el-GR")}</td>
-              <td>{match.homeTeam.name}</td>
-              <td>{match.awayTeam.name}</td>
-              <td>
-                {match.score.fullTime.home} - {match.score.fullTime.away}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div>
+      <h1>Champions League Αγώνες</h1>
+      <ul>
+        {matches.map((match) => (
+          <li key={match.id}>
+            {match.home} vs {match.away} <br />
+            Odds: {match.home_odds} - {match.draw_odds} - {match.away_odds} <br />
+            Πρόβλεψη: {match.prediction}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
