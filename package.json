@@ -1,0 +1,11 @@
+{
+  "name": "footballfans",
+  "version": "1.0.0",
+  "description": "Αυτόματο update για matches.json",
+  "main": "update-matches.js",
+  "type": "module",
+  "scripts": {
+    "start": "node update-matches.js"
+  },
+  "license": "MIT"
+}
