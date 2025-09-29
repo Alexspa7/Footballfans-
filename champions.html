@@ -6,6 +6,40 @@
   <title>Προγνωστικά Champions League</title>
   <style>
     body {
+      <script>
+  async function loadMatches() {
+    try {
+      const response = await fetch("api/matches.json");
+      const data = await response.json();
+
+      const today = new Date().toISOString().split("T")[0]; // σήμερα
+      const championsMatches = data.matches.filter(
+        m => m.date === today && m.competition === "Champions League"
+      );
+
+      const container = document.querySelector(".content");
+
+      if (championsMatches.length === 0) {
+        container.innerHTML += `<p><em>Δεν υπάρχουν σημερινοί αγώνες Champions League.</em></p>`;
+        return;
+      }
+
+      let html = "<ul>";
+      championsMatches.forEach(match => {
+        html += `<li><strong>${match.home}</strong> vs <strong>${match.away}</strong> 
+        (${match.time}) - Πρόβλεψη: ${match.prediction}</li>`;
+      });
+      html += "</ul>";
+
+      container.innerHTML += html;
+
+    } catch (error) {
+      console.error("Σφάλμα:", error);
+    }
+  }
+
+  loadMatches();
+</script>
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
