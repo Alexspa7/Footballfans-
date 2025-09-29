@@ -1,4 +1,3 @@
-
 export default async function handler(req, res) {
   const API_KEY = process.env.API_KEY;
 
@@ -13,11 +12,17 @@ export default async function handler(req, res) {
     // Κάνουμε fetch για καθεμία
     const results = await Promise.all(
       competitions.map(async (comp) => {
-        const response = await fetch(`https://api.football-data.org/v4/competitions/${comp}/matches`, {
-          headers: { "X-Auth-Token": API_KEY },
-        });
+        const response = await fetch(
+          `https://api.football-data.org/v4/competitions/${comp}/matches`,
+          {
+            headers: {
+              "X-Auth-Token": API_KEY,
+            },
+          }
+        );
 
         const data = await response.json();
+
         return {
           competition: data.competition?.name || comp,
           matches: data.matches || [],
