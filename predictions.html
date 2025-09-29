@@ -41,40 +41,7 @@
 
 <div class="wrap">
   <div class="panel">
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-      <div>
-        <button id="autoGen">Αυτόματη Γεννήτρια Προβλέψεων</button>
-        <button id="regen" class="secondary">Επανυπολογισμός (με randomness)</button>
-        <button id="clear" class="secondary">Καθαρισμός τοπικών αποθηκεύσεων</button>
-      </div>
-      <div style="display:flex;gap:8px;align-items:center">
-        <label style="font-size:.9rem;color:#333">Confidence threshold:</label>
-        <select id="threshold">
-          <option value="0.5">0.5</option>
-          <option value="0.6" selected>0.6</option>
-          <option value="0.7">0.7</option>
-        </select>
-      </div>
-    </div>
 
-    <div style="margin-top:10px;color:#444;font-size:.95rem">
-      - Φόρτωσε αγώνες από `matches.json` (στο ίδιο folder) ή κόλλησέ τους παρακάτω σε JSON μορφή.<br>
-      - Κάνε «Αυτόματη Γεννήτρια» για να πάρεις προβλέψεις. Μπορείς να τις επεξεργαστείς και να τις κατεβάσεις.
-    </div>
-  </div>
-
-  <div class="panel">
-    <strong>Matches JSON (π.χ. [{ "id":1, "home":"ΠΑΟ", "away":"Ολυμπιακός", "home_odds":1.8, "away_odds":4.2, "draw_odds":3.6 }])</strong>
-    <textarea id="matchesInput" placeholder='Επικόλλησε εδώ JSON ή άφησέ το κενό για fetch "matches.json"'></textarea>
-    <div style="display:flex;gap:8px;margin-top:8px">
-      <button id="loadFromTextarea">Φόρτωσε από textarea</button>
-      <button id="fetchMatches" class="secondary">Φόρτωσε matches.json</button>
-      <button id="downloadJson" class="secondary">Κατέβασε προβλέψεις (JSON)</button>
-    </div>
-  </div>
-
-  <div id="matchesList" class="panel">
-    <!-- εδώ θα προστεθούν τα matches -->
     <div id="noMatches" style="color:#666">Δεν υπάρχουν ακόμα αγώνες. Φόρτωσε JSON και πάτησε "Αυτόματη Γεννήτρια".</div>
   </div>
 
