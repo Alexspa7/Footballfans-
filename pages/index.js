@@ -1,32 +1,46 @@
-export default async function handler(req, res) {
-  const API_KEY = process.env.API_KEY;
+import { useEffect, useState } from "react";
 
-  if (!API_KEY) {
-    return res.status(500).json({ error: "API key not set in environment variables" });
-  }
+export default function Home() {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  try {
-    // Competitions που θέλουμε
-    const competitions = ["CL", "EL", "ECL", "PL", "SA", "PD", "BL1", "FL1"];
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("/api/index");
+        const json = await res.json();
+        setData(json.results || []);
+      } catch (err) {
+        console.error("Error fetching data:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    // Κάνουμε fetch για καθεμία
-    const results = await Promise.all(
-      competitions.map(async (comp) => {
-        const response = await fetch(`https://api.football-data.org/v4/competitions/${comp}/matches`, {
-          headers: { "X-Auth-Token": API_KEY },
-        });
+    fetchData();
+  }, []);
 
-        const data = await response.json();
-        return {
-          competition: data.competition?.name || comp,
-          matches: data.matches || [],
-        };
-      })
-    );
+  if (loading) return <p>Loading...</p>;
 
-    res.status(200).json({ results });
-  } catch (error) {
-    console.error("API Error:", error);
-    res.status(500).json({ error: "Failed to fetch matches" });
-  }
+  return (
+    <div style={{ fontFamily: "Arial, sans-serif", padding: "20px" }}>
+      <h1>Football Matches</h1>
+      {data.length === 0 ? (
+        <p>No matches found.</p>
+      ) : (
+        data.map((comp) => (
+          <div key={comp.competition} style={{ marginBottom: "30px" }}>
+            <h2>{comp.competition}</h2>
+            <ul>
+              {comp.matches.slice(0, 10).map((match) => (
+                <li key={match.id}>
+                  {match.homeTeam.name} vs {match.awayTeam.name} - {match.status}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      )}
+    </div>
+  );
 }
