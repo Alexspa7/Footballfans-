@@ -20,6 +20,7 @@
       text-align: center;
       box-shadow: 0 2px 5px rgba(0,0,0,0.4);
     }
+
     nav a {
       color: #fff;
       text-decoration: none;
@@ -28,6 +29,7 @@
       font-size: 16px;
       transition: color 0.3s;
     }
+
     nav a:hover {
       color: #ffd700;
     }
@@ -81,19 +83,42 @@
       color: #00509e;
       margin-bottom: 5px;
     }
+
+    /* Banner */
+    .ad-banner {
+      text-align: center;
+      margin: 15px 0;
+    }
+
+    .ad-banner img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
   </style>
 </head>
 <body>
-
   <!-- Μενού -->
   <nav>
     <a href="index.html">🏠 Αρχική</a>
-    <a href="champions.html">⭐ Champions </a>
-    <a href="europa-today.html">⚽ Europa </a>
-    <a href="conference.html">🌍 Conference</a>
-     </nav>ο
+    <a href="champions.html">⭐ Champions League</a>
+    <a href="europa-today.html">⚽ Europa League</a>
+    <a href="conference.html">🌍 Conference League</a>
+    <a href="predictions.html">📊 Προγνωστικά</a>
+  </nav>
 
+  <!-- Banner ΠΑΝΩ από τα ματς -->
+  <div class="ad-banner">
+    <a href="https://www.to-link-sou.gr" target="_blank">
+      <img src="images/banner-top.jpg" alt="Διαφήμιση">
+    </a>
+  </div>
+
+  <!-- Τίτλος -->
   <h2>⭐ Αγώνες & Προβλέψεις Champions League</h2>
+
+  <!-- Αγώνες -->
   <div id="matches"></div>
 
   <script src="update-matches.js"></script>
