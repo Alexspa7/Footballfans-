@@ -1,8 +1,10 @@
-export default function Champions() {
-  const [matches, setMatches] = React.useState([]);
+import React, { useState, useEffect } from "react";
 
-  React.useEffect(() => {
-    fetch("/matches.json")   // <-- Εδώ δείχνει στο αρχείο σου
+export default function Champions() {
+  const [matches, setMatches] = useState([]);
+
+  useEffect(() => {
+    fetch("/matches.json") // <-- σωστή διαδρομή επειδή είναι στο public/
       .then((res) => res.json())
       .then((data) => setMatches(data))
       .catch((err) => console.error("Σφάλμα φόρτωσης:", err));
