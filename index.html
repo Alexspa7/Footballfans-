@@ -1,24 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="el">
 <head>
-  <meta name="google-adsense-account" content="ca-pub-3677664037155953">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-3676XXXXXXXXX"> 
   <title>SuperFootball Προγνωστικά</title>
   <style>
     body {
-      <nav>
-  <ul style="list-style:none; display:flex; gap:15px; background:#f4f4f4; padding:10px;">
-    <li><a href="index.html">Αρχική</a></li>
-    <li><a href="protahtlima.html">Πρωτάθλημα</a></li>
-    <li><a href="champions.html">Champions League</a></li>
-    <li><a href="europa-today.html">Europa League</a></li>
-    <li><a href="privacy.html">Πολιτική Απορρήτου</a></li>
-    <li><a href="terms.html">Όροι Χρήσης</a></li>
-    <li><a href="contact.html">Επικοινωνία</a></li>
-  </ul>
-</nav>
       font-family: Arial, sans-serif;
       margin: 0;
       background: #f4f7fb;
@@ -44,145 +32,56 @@
     nav a:hover {
       background: #003399;
     }
-    .container {
-      max-width: 900px;
-      margin: 20px auto;
-      padding: 10px;
-    }
-    .ad-banner {
-      background: #ddd;
-      color: #444;
+    main {
+      padding: 20px;
       text-align: center;
+    }
+    footer {
+      margin-top: 30px;
       padding: 15px;
-      margin: 20px 0;
-      border-radius: 8px;
-      font-weight: bold;
+      background: #003399;
+      color: white;
+      text-align: center;
     }
-    .league {
-      margin: 20px 0;
-      padding: 15px;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 5px;
     }
-    .league h2 {
-      color: #0055cc;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 5px;
-    }
-    .match {
-      margin: 12px 0;
-      padding: 10px;
-      border-bottom: 1px solid #eee;
-    }
-    .match:last-child {
-      border-bottom: none;
-    }
-    .prediction {
-      color: red;
-      font-weight: bold;
-    }
-    .odds {
-      color: teal;
-      font-weight: bold;
-    }
-    .total-odds {
-      font-weight: bold;
-      margin-top: 10px;
-      color: #222;
+    footer a:hover {
+      text-decoration: underline;
     }
   </style>
-  <script>
-    function showLeague(leagueId) {
-      const leagues = document.querySelectorAll('.league');
-      leagues.forEach(l => l.style.display = 'none');
-      document.getElementById(leagueId).style.display = 'block';
-    }
-    window.onload = () => {
-      showLeague('europa');
-    }
-  </script>
 </head>
 <body>
   <header>
     <h1>SuperFootball Προγνωστικά</h1>
+    <p>Προβλέψεις ποδοσφαίρου – Πρωτάθλημα, Champions League & Europa League</p>
   </header>
 
   <nav>
-    <a href="#" onclick="showLeague('europa')">Europa League</a>
-    <a href="#" onclick="showLeague('league')">Πρωτάθλημα</a>
-    <a href="#" onclick="showLeague('champions')">Champions League</a>
+    <a href="index.html">Αρχική</a>
+    <a href="protahtlima.html">Πρωτάθλημα</a>
+    <a href="champions.html">Champions League</a>
+    <a href="europa-today.html">Europa League</a>
+    <a href="privacy.html">Πολιτική Απορρήτου</a>
+    <a href="terms.html">Όροι Χρήσης</a>
+    <a href="contact.html">Επικοινωνία</a>
   </nav>
 
-  <div class="container">
+  <main>
+    <h2>Καλώς ήρθατε στο SuperFootball.gr</h2>
+    <p>Εδώ θα βρείτε καθημερινά προγνωστικά ποδοσφαίρου, αναλύσεις και στατιστικά για όλες τις μεγάλες διοργανώσεις.</p>
+    <p>Μείνετε συντονισμένοι για τις σημερινές προβλέψεις μας!</p>
+  </main>
 
-    <div class="ad-banner">Διαφήμιση 728x90</div>
-
-    <!-- Europa League -->
-    <div class="league" id="europa">
-      <h2>Europa League (25/09/2025)</h2>
-      <div class="match">
-        <strong>Παναθηναϊκός — Άστον Βίλα</strong><br>
-        Πρόβλεψη: <span class="prediction">Χ</span><br>
-        Απόδοση: <span class="odds">3.4</span>
-      </div>
-      <div class="match">
-        <strong>Λιλ — Σπάρτα Πράγας</strong><br>
-        Πρόβλεψη: <span class="prediction">Over 2.5</span><br>
-        Απόδοση: <span class="odds">1.95</span>
-      </div>
-      <div class="match">
-        <strong>Άλλος αγώνας Europa</strong><br>
-        Πρόβλεψη: <span class="prediction">Over 3.5</span><br>
-        Απόδοση: <span class="odds">2.0</span>
-      </div>
-      <p class="total-odds">Συνολική απόδοση: 13.26</p>
-    </div>
-
-    <!-- Πρωτάθλημα -->
-    <div class="league" id="league">
-      <h2>Πρωτάθλημα (27/09/2025)</h2>
-      <div class="match">
-        <strong>Λίβερπουλ — Γουέστ Χαμ</strong><br>
-        Πρόβλεψη: <span class="prediction">Over 3.5</span><br>
-        Απόδοση: <span class="odds">2.1</span>
-      </div>
-      <div class="match">
-        <strong>Λειψία — Φράιμπουργκ</strong><br>
-        Πρόβλεψη: <span class="prediction">2</span><br>
-        Απόδοση: <span class="odds">3.6</span>
-      </div>
-      <div class="match">
-        <strong>Μάιντζ — Στουτγκάρδη</strong><br>
-        Πρόβλεψη: <span class="prediction">Over 2.5</span><br>
-        Απόδοση: <span class="odds">1.85</span>
-      </div>
-      <p class="total-odds">Συνολική απόδοση: 13.99</p>
-    </div>
-
-    <!-- Champions League -->
-    <div class="league" id="champions">
-      <h2>Champions League (30/09/2025)</h2>
-      <div class="match">
-        <strong>Αταλάντα — Μίλαν</strong><br>
-        Πρόβλεψη: <span class="prediction">1</span><br>
-        Απόδοση: <span class="odds">2.0</span>
-      </div>
-      <div class="match">
-        <strong>Ίντερ — Μπενφίκα</strong><br>
-        Πρόβλεψη: <span class="prediction">1</span><br>
-        Απόδοση: <span class="odds">1.75</span>
-      </div>
-      <div class="match">
-        <strong>Άγιαξ — Σέλτικ</strong><br>
-        Πρόβλεψη: <span class="prediction">1</span><br>
-        Απόδοση: <span class="odds">1.65</span>
-      </div>
-      <p class="total-odds">Συνολική απόδοση: 5.78</p>
-    </div>
-
-    <div class="ad-banner">Διαφήμιση 300x250</div>
-
-  </div>
+  <footer>
+    <p>
+      <a href="privacy.html">Πολιτική Απορρήτου</a> | 
+      <a href="terms.html">Όροι Χρήσης</a> | 
+      <a href="contact.html">Επικοινωνία</a>
+    </p>
+    <p>© 2025 SuperFootball.gr</p>
+  </footer>
 </body>
 </html>
