@@ -1,11 +1,17 @@
-{
-  "name": "footballfans",
-  "version": "1.0.0",
-  "description": "Αυτόματο update για matches.json",
-  "main": "update-matches.js",
-  "type": "module",
-  "scripts": {
-    "start": "node update-matches.js"
-  },
-  "license": "MIT"
+const fs = require("fs");
+
+// Διάβασε το matches.json
+let matches = {};
+try {
+  matches = JSON.parse(fs.readFileSync("matches.json", "utf8"));
+} catch (err) {
+  console.log("Δεν βρέθηκε matches.json, δημιουργείται καινούργιο...");
 }
+
+// Ενημέρωσε με τρέχουσα ημερομηνία
+matches.lastUpdate = new Date().toISOString();
+
+// Γράψε ξανά το αρχείο
+fs.writeFileSync("matches.json", JSON.stringify(matches, null, 2));
+
+console.log("✅ Το matches.json ενημερώθηκε με επιτυχία!");
