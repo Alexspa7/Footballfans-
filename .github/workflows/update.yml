@@ -2,8 +2,8 @@ name: Update Matches
 
 on:
   schedule:
-    - cron: "0 */6 * * *"   # κάθε 6 ώρες
-  workflow_dispatch:        # δυνατότητα χειροκίνητης εκτέλεσης
+    - cron: "*/15 * * * *"   # κάθε 15 λεπτά
+  workflow_dispatch:          # δυνατότητα χειροκίνητης εκτέλεσης
 
 jobs:
   update:
@@ -25,6 +25,11 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
           git add matches.json
-          git commit -m "Auto update matches.json"
-          git push
+          if git diff --cached --quiet; then
+            echo "✅ Καμία αλλαγή στο matches.json – δεν έγινε commit"
+          else
+            git commit -m "Auto update matches.json"
+            git push
+          fi
