@@ -1,238 +1,74 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="el">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Προβλέψεις - SuperFootball</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Προβλέψεις Champions League</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      margin: 0;
+      padding: 0;
+    }
 
-<style>
-  :root{--blue:#003399;--accent:#0055cc;--card:#fff;border-radius:10px}
-  body{font-family:Arial,Helvetica,sans-serif;background:#f3f6fb;margin:0;color:#222}
-  header{background:var(--blue);color:#fff;padding:18px;text-align:center}
-  .wrap{max-width:980px;margin:18px auto;padding:0 14px}
-  .controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;align-items:center}
-  button,select,input{background:var(--accent);color:#fff;border:0;padding:9px 12px;border-radius:8px;cursor:pointer}
-  button.secondary{background:#888}
-  .panel{background:var(--card);padding:12px;border-radius:12px;box-shadow:0 6px 18px rgba(2,10,34,.06);margin-bottom:12px}
-  .match{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:10px;border-bottom:1px solid #eee}
-  .match:last-child{border-bottom:0}
-  .teams{display:flex;gap:14px;align-items:center}
-  .team{min-width:120px}
-  .odds{font-size:0.95rem;color:#555}
-  .pred{font-weight:bold;padding:6px 8px;border-radius:8px}
-  .pred.home{background:#e6f7ea;color:#1b7f2a}
-  .pred.draw{background:#fff3cd;color:#856404;border:1px solid #f0e2a6}
-  .pred.away{background:#ffe6e6;color:#a12b2b}
-  .actions{display:flex;gap:8px;align-items:center}
-  textarea{width:100%;min-height:120px;padding:8px;border-radius:8px;border:1px solid #ddd;margin-top:8px}
-  .footer{padding:18px;text-align:center;color:#777;font-size:0.9rem}
-  @media(max-width:640px){
-    .match{flex-direction:column;align-items:flex-start}
-    .teams{flex-direction:column;gap:6px}
-  }
-</style>
+    header {
+      background: #003366;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 10px;
+    }
+
+    .match-card {
+      background: white;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-left: 6px solid #0055cc;
+    }
+
+    .match-card h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #003366;
+    }
+
+    .match-card p {
+      margin: 5px 0;
+      font-size: 15px;
+      color: #444;
+    }
+
+    .prediction {
+      font-weight: bold;
+      color: #0055cc;
+    }
+  </style>
 </head>
 <body>
+  <header>⚽ Προβλέψεις Champions League</header>
 
-<header>
-  <h1>Προβλέψεις (Αυτόματες)</h1>
-  <div>SuperFootball — αυτόματες προβλέψεις με έξυπνο αλγόριθμο</div>
-</header>
+  <div class="container">
+    <div class="match-card">
+      <h3>Real Madrid vs Bayern Munich</h3>
+      <p><strong>Ημερομηνία:</strong> 30/09/2025 - 21:00</p>
+      <p class="prediction">Πρόβλεψη: Over 2.5</p>
+    </div>
 
-<div class="wrap">
-  <div class="panel">
-
-    <div id="noMatches" style="color:#666">Δεν υπάρχουν ακόμα αγώνες. Φόρτωσε JSON και πάτησε "Αυτόματη Γεννήτρια".</div>
+    <div class="match-card">
+      <h3>Manchester City vs Barcelona</h3>
+      <p><strong>Ημερομηνία:</strong> 01/10/2025 - 22:00</p>
+      <p class="prediction">Πρόβλεψη: Goal/Goal</p>
+    </div>
   </div>
-
-  <div class="panel">
-    <button id="saveLocal">Αποθήκευση προβλέψεων τοπικά</button>
-    <button id="loadLocal" class="secondary">Φόρτωση απο τοπικό</button>
-    <button id="downloadMatches" class="secondary">Κατέβασε matches.json</button>
-  </div>
-
-  <div class="footer">
-    Tips: Μπορείς να προσαρμόσεις τον αλγόριθμο στο JS — για πραγματικό AI (GPT) χρειάζεται server & API key.
-  </div>
-</div>
-
-<script>
-/*
-  Απλός "AI-like" αλγόριθμος:
-  - Αν μικρότερες αποδόσεις => ισχυρότερη πιθανότητα για εκείνη την ομάδα.
-  - Παίρνουμε "strength" από inverse odds.
-  - Προσθέτουμε μικρό τυχαίο θόρυβο και κανονικοποιούμε.
-  - Confidence = max(probabilities).
-*/
-
-let matches = [];
-const matchesList = document.getElementById('matchesList');
-const noMatches = document.getElementById('noMatches');
-
-function renderMatches() {
-  matchesList.innerHTML = '';
-  if (!matches.length) {
-    matchesList.appendChild(noMatches);
-    return;
-  }
-  matches.forEach((m, idx) => {
-    const el = document.createElement('div');
-    el.className = 'match';
-    const home = m.home || 'Home';
-    const away = m.away || 'Away';
-    const homeOdds = parseFloat(m.home_odds || m.h_odds || 2.0);
-    const awayOdds = parseFloat(m.away_odds || m.a_odds || 2.0);
-    const drawOdds = parseFloat(m.draw_odds || m.d_odds || 3.0);
-    const pred = m.prediction || { outcome:'-', confidence:0 };
-    el.innerHTML =
-      `<div class="teams">
-         <div class="team"><div style="font-weight:700">${home}</div><div class="odds">odds: ${homeOdds}</div></div>
-         <div style="align-self:center;color:#999">vs</div>
-         <div class="team"><div style="font-weight:700">${away}</div><div class="odds">odds: ${awayOdds}</div></div>
-         <div style="margin-left:12px" class="odds">draw: ${drawOdds}</div>
-       </div>
-       <div class="actions">
-         <div class="pred ${pred.outcome==='home'?'home':pred.outcome==='away'?'away':'draw'}" id="pred-${idx}">
-           ${pred.outcome==='home'?home:(pred.outcome==='away'?away:(pred.outcome==='draw'?'Ισοπαλία':'-'))}
-           <div style="font-weight:400;font-size:.85rem">${(pred.confidence*100||0).toFixed(0)}%</div>
-         </div>
-         <button onclick="editPrediction(${idx})" class="secondary">Επεξεργασία</button>
-         <button onclick="removeMatch(${idx})" class="secondary" style="background:#c33">Διαγραφή</button>
-       </div>`;
-    matchesList.appendChild(el);
-  });
-}
-
-function removeMatch(i) {
-  if (!confirm('Θέλεις να διαγράψεις αυτό τον αγώνα;')) return;
-  matches.splice(i,1);
-  renderMatches();
-}
-
-function editPrediction(i) {
-  const m = matches[i];
-  const newOutcome = prompt('Βάλε αποτέλεσμα (home/draw/away):', m.prediction?.outcome || '');
-  const newConf = parseFloat(prompt('Confidence (0-1):', (m.prediction?.confidence||0).toFixed(2)));
-  if (newOutcome) {
-    m.prediction = { outcome: newOutcome, confidence: isNaN(newConf)?0:Math.min(1,Math.max(0,newConf)) };
-    renderMatches();
-  }
-}
-
-/* αλγόριθμος πρόβλεψης */
-function generatePredictions(options={randomFactor:0.15}) {
-  const thr = parseFloat(document.getElementById('threshold').value || 0.6);
-  matches = matches.map(m => {
-    const h = parseFloat(m.home_odds||2), a = parseFloat(m.away_odds||2), d = parseFloat(m.draw_odds||3);
-    // strength = 1/odds
-    let sh = 1 / Math.max(0.01, h);
-    let sa = 1 / Math.max(0.01, a);
-    let sd = 1 / Math.max(0.01, d);
-    // normalize
-    let sum = sh+sa+sd;
-    sh/=sum; sa/=sum; sd/=sum;
-    // add small random noise
-    const r = (Math.random()-0.5) * options.randomFactor;
-    sh = Math.max(0, Math.min(1, sh + r));
-    sa = Math.max(0, Math.min(1, sa - r*0.3));
-    // recompute sd
-    let ssum = sh+sa;
-    sd = Math.max(0, 1-ssum);
-    // re-normalize
-    sum = sh+sa+sd;
-    sh/=sum; sa/=sum; sd/=sum;
-    // choose max
-    let outcome = 'draw', confidence = Math.max(sh,sa,sd);
-    if (sh === Math.max(sh,sa,sd)) outcome='home';
-    else if (sa === Math.max(sh,sa,sd)) outcome='away';
-    else outcome='draw';
-    // apply threshold - if below, mark as draw/low-confidence
-    if (confidence < thr) { outcome = 'draw'; }
-    m.prediction = { outcome, confidence };
-    return m;
-  });
-  renderMatches();
-}
-
-document.getElementById('autoGen').addEventListener('click', ()=> generatePredictions({randomFactor:0.18}));
-document.getElementById('regen').addEventListener('click', ()=> generatePredictions({randomFactor:0.35}));
-document.getElementById('clear').addEventListener('click', ()=> { if(confirm('Θες όντως καθάρισμα;')){ localStorage.removeItem('sf_predictions'); alert('Καθαρίστηκε.');}});
-
-document.getElementById('loadFromTextarea').addEventListener('click', ()=>{
-  const txt = document.getElementById('matchesInput').value.trim();
-  if(!txt) return alert('Βάλε JSON στο textarea ή πάτησε "fetch matches.json"');
-  try {
-    const arr = JSON.parse(txt);
-    if(!Array.isArray(arr)) throw 'NOT_ARRAY';
-    matches = arr.map(m=>Object.assign({},m));
-    renderMatches();
-    alert('Φορτώθηκαν αγώνες από textarea.');
-  } catch(e) {
-    alert('Σφάλμα στο JSON: ' + e);
-  }
-});
-
-document.getElementById('fetchMatches').addEventListener('click', async ()=>{
-  try {
-    const res = await fetch('matches.json', {cache: 'no-store'});
-    if(!res.ok) throw 'not found';
-    const arr = await res.json();
-    if(!Array.isArray(arr)) throw 'not array';
-    matches = arr.map(m=>Object.assign({},m));
-    renderMatches();
-    alert('Φορτώθηκαν matches.json (αν υπάρχει).');
-  } catch(e) {
-    alert('Δεν βρέθηκε matches.json ή Σφάλμα: ' + e);
-  }
-});
-
-document.getElementById('downloadJson').addEventListener('click', ()=>{
-  const content = JSON.stringify(matches, null, 2);
-  const blob = new Blob([content], {type:'application/json'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'predictions.json';
-  a.click();
-});
-
-document.getElementById('saveLocal').addEventListener('click', ()=>{
-  localStorage.setItem('sf_predictions', JSON.stringify(matches));
-  alert('Αποθηκεύτηκαν τοπικά.');
-});
-document.getElementById('loadLocal').addEventListener('click', ()=>{
-  const d = localStorage.getItem('sf_predictions');
-  if(!d) return alert('Δεν υπάρχει τοπική αποθήκευση.');
-  try {
-    matches = JSON.parse(d);
-    renderMatches();
-    alert('Φορτώθηκαν από localStorage.');
-  } catch(e){ alert('Σφάλμα: ' + e); }
-});
-
-document.getElementById('downloadMatches').addEventListener('click', ()=>{
-  const sample = JSON.stringify(matches, null, 2);
-  const blob = new Blob([sample||'[]'], {type:'application/json'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'matches.json';
-  a.click();
-});
-
-/* προσπάθεια αυτόματης φόρτωσης matches.json στην αρχή (αν υπάρχει) */
-(async function tryAutoLoad(){
-  try {
-    const res = await fetch('matches.json', {cache:'no-store'});
-    if(res.ok) {
-      const arr = await res.json();
-      if(Array.isArray(arr) && arr.length) {
-        matches = arr.map(m=>Object.assign({},m));
-        renderMatches();
-      }
-    }
-  } catch(e){ /* ignore */ }
-})();
-
-renderMatches();
-</script>
 </body>
 </html>
