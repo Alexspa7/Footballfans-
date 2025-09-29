@@ -1,17 +1,10 @@
-const fs = require("fs");
-
-// Διάβασε το matches.json
-let matches = {};
-try {
-  matches = JSON.parse(fs.readFileSync("matches.json", "utf8"));
-} catch (err) {
-  console.log("Δεν βρέθηκε matches.json, δημιουργείται καινούργιο...");
+{
+  "name": "footballfans",
+  "version": "1.0.0",
+  "description": "Αυτόματη ενημέρωση matches.json",
+  "main": "update-matches.js",
+  "scripts": {
+    "update": "node update-matches.js"
+  },
+  "license": "MIT"
 }
-
-// Ενημέρωσε με τρέχουσα ημερομηνία
-matches.lastUpdate = new Date().toISOString();
-
-// Γράψε ξανά το αρχείο
-fs.writeFileSync("matches.json", JSON.stringify(matches, null, 2));
-
-console.log("✅ Το matches.json ενημερώθηκε με επιτυχία!");
