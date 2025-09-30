@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Test</title>
+</head>
+<body>
+  <h1>🔍 Test AI API</h1>
+  <button onclick="testAI()">Ζήτα πρόβλεψη για Real vs Bayern</button>
+  <div id="result" style="margin-top:20px; font-weight:bold; color:darkblue;"></div>
+
+  <script>
+    async function testAI() {
+      document.getElementById("result").innerHTML = "Φόρτωση...";
+      try {
+        const res = await fetch("/api/ai", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ home: "Real Madrid", away: "Bayern Munich" })
+        });
+        const data = await res.json();
+        document.getElementById("result").innerHTML =
+          "🤖 AI Πρόβλεψη: " + (data.prediction || "Καμία απάντηση");
+      } catch (err) {
+        document.getElementById("result").innerHTML =
+          "Σφάλμα: " + err.message;
+      }
+    }
+  </script>
+</body>
+</html>
