@@ -1,126 +1,76 @@
 <!DOCTYPE html>
 <html lang="el">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Αγώνες & Προβλέψεις Champions League</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Champions League - Αυτόματες Προβλέψεις</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #001f3f, #00509e);
-      margin: 0;
-      padding: 0;
-      color: #fff;
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f0f4ff;
+      margin:0;
+      padding:0;
+      color:#0b233f;
     }
-
-    /* Μενού */
-    nav {
-      background-color: rgba(0, 0, 50, 0.9);
-      padding: 12px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    header{
+      background:#002e6b;
+      color:#fff;
+      padding:14px 10px;
+      text-align:center;
+      font-size:20px;
+      font-weight:700;
     }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-      font-size: 16px;
-      transition: color 0.3s;
+    nav{
+      background:#00509e;
+      padding:8px 10px;
+      text-align:center;
     }
-
-    nav a:hover {
-      color: #ffd700;
+    nav a{ color:#fff; text-decoration:none; margin:0 10px; font-weight:600; }
+    .wrap{ max-width:980px; margin:18px auto; padding:0 12px; }
+    .advice{ text-align:center; color:#555; margin-bottom:12px; }
+    #matches{ display:flex; flex-direction:column; gap:14px; align-items:center; min-height:60px; }
+    .card{
+      width:100%; max-width:720px;
+      background:#fff; border-radius:10px; padding:14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      border-left:6px solid #00509e;
     }
-
-    h2 {
-      text-align: center;
-      margin: 25px 0;
-      font-size: 24px;
-      color: #ffd700;
-    }
-
-    /* Container */
-    #matches {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      padding: 20px;
-    }
-
-    /* Κάρτες Αγώνων */
-    .match-card {
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 18px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      width: 90%;
-      max-width: 520px;
-      color: #001f3f;
-      transition: transform 0.2s ease-in-out;
-    }
-
-    .match-card:hover {
-      transform: scale(1.03);
-    }
-
-    .match-card strong {
-      color: #003366;
-    }
-
-    .prediction {
-      font-style: italic;
-      color: #cc0000;
-      margin-top: 8px;
-      display: block;
-    }
-
-    .date-time {
-      font-size: 14px;
-      font-weight: bold;
-      color: #00509e;
-      margin-bottom: 5px;
-    }
-
-    /* Banner */
-    .ad-banner {
-      text-align: center;
-      margin: 15px 0;
-    }
-
-    .ad-banner img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    .meta{ font-size:13px; color:#333; margin-bottom:6px; }
+    .teams{ font-size:18px; font-weight:700; color:#002e6b; }
+    .prediction{ margin-top:8px; font-weight:700; color:#d62828; }
+    .small { font-size:13px; color:#666; }
+    .error { color:#b00020; text-align:center; }
+    footer{ text-align:center; padding:12px; color:#666; font-size:13px; margin:24px 0; }
+    @media (max-width:520px){
+      .teams{ font-size:16px; }
+      header{ font-size:18px; }
     }
   </style>
 </head>
 <body>
-  <!-- Μενού -->
+  <header>Champions League — Αυτόματες Προβλέψεις</header>
   <nav>
-    <a href="index.html">🏠 Αρχική</a>
-    <a href="champions.html">⭐ Champions League</a>
-    <a href="europa-today.html">⚽ Europa League</a>
-    <a href="conference.html">🌍 Conference League</a>
-    
+    <a href="index.html">Αρχική</a>
+    <a href="champions.html">Champions</a>
+    <a href="europa-today.html">Europa</a>
+    <a href="conference.html">Conference</a>
   </nav>
 
-  <!-- Banner ΠΑΝΩ από τα ματς -->
-  <div class="ad-banner">
-    <a href="https://www.to-link-sou.gr" target="_blank">
-      <img src="images/banner-top.jpg" alt="Διαφήμιση">
-    </a>
+  <div class="wrap">
+    <p class="advice small">Τα σημερινά παιχνίδια τραβιούνται αυτόματα και εμφανίζουν μία σύντομη «AI» πρόβλεψη.</p>
+
+    <div id="matches">
+      <p class="small">Φόρτωση αγώνων…</p>
+    </div>
+
+    <p id="note" class="small" style="text-align:center; margin-top:10px;">
+      Αν δεν εμφανίζονται αγώνες, πιθανότατα σήμερα δεν υπάρχουν παιχνίδια ή υπάρχει πρόβλημα σύνδεσης με το API.
+    </p>
   </div>
 
-  <!-- Τίτλος -->
-  <h2>⭐ Αγώνες & Προβλέψεις Champions League</h2>
+  <footer>© 2025 SuperFootball</footer>
 
-  <!-- Αγώνες -->
-  <div id="matches"></div>
-
-  <script src="update-matches.js"></script>
+  <!-- Κάλεσε το script που τραβάει τα παιχνίδια και βγάζει πρόβλεψη -->
+  <script src="ai-predictions.js"></script>
 </body>
 </html>
