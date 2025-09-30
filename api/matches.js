@@ -1,6 +1,7 @@
 export default async function handler(req, res) {
-  const apiKey = process.env.FOOTBALL_API_KEY; // το API key από τα Vercel env
-  const url = "https://api.football-data.org/v4/matches";
+  const apiKey = process.env.FOOTBALL_API_KEY; // το API key από το Vercel
+  const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
+  const url = `https://api.football-data.org/v4/competitions/CL/matches?dateFrom=${today}&dateTo=${today}`;
 
   try {
     const response = await fetch(url, {
