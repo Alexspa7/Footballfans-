@@ -1,20 +1,22 @@
-export default async function handler(req, res) {
-  const apiKey = process.env.FOOTBALL_API_KEY; // το API key από το Vercel
-  const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
-  const url = `https://api.football-data.org/v4/competitions/CL/matches?dateFrom=${today}&dateTo=${today}`;
-
-  try {
-    const response = await fetch(url, {
-      headers: { "X-Auth-Token": apiKey }
-    });
-
-    if (!response.ok) {
-      return res.status(response.status).json({ error: "API error" });
+export default function handler(req, res) {
+  const matches = [
+    {
+      date: "2025-09-30",
+      competition: "Champions League",
+      home: "Real Madrid",
+      away: "Bayern Munich",
+      time: "21:00",
+      prediction: "Over 2.5"
+    },
+    {
+      date: "2025-09-30",
+      competition: "Champions League",
+      home: "Barcelona",
+      away: "Liverpool",
+      time: "22:00",
+      prediction: "GG"
     }
+  ];
 
-    const data = await response.json();
-    res.status(200).json(data);
-  } catch (error) {
-    res.status(500).json({ error: "Server error", details: error.message });
-  }
+  res.status(200).json({ matches });
 }
